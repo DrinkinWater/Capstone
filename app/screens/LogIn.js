@@ -25,7 +25,7 @@ class LogIn extends Component{
     const { navigate } = this.props.navigation;
     return (
       <View>
-        <Text>Welcome To Stepme</Text>
+        <Text>Welcome To BendAid</Text>
 
         <TextInput
           placeholder="username"

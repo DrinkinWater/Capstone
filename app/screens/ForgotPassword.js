@@ -7,7 +7,7 @@ export default class ForgotPassword extends Component{
     return(
       <View>
         <Text>Forgot Password</Text>
-        <Text>Enter your emial and follow the instruction to reset your password</Text>
+        <Text>Enter your emial and follow the instructions to reset your password</Text>
         <TextInput/>
         <Button title="Send"/>
       </View>

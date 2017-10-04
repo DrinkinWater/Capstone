@@ -1,6 +1,7 @@
-import React,{Component} from 'react'
-import {View,Text,TextInput,TouchableOpacity,Button} from 'react-native'
-export default class SignUp extends Component{
+import React, { Component } from 'react'
+import { View, Text, TextInput, TouchableOpacity, Button } from 'react-native'
+
+export default class SignUp extends Component {
   render(){
     return(
       <View>
@@ -8,6 +9,8 @@ export default class SignUp extends Component{
         <Text>Username</Text>
         <TextInput/>
         <Text>Email</Text>
+        <TextInput/>
+        <Text>NRIC (Optional) </Text>
         <TextInput/>
         <Text>Password</Text>
         <TextInput secureTextEntry/>
