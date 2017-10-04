@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import {View,Text,TextInput,TouchableOpacity,Button} from 'react-native'
+import {View,StyleSheet, Text,TextInput,TouchableOpacity,Button} from 'react-native'
 export default class LogIn extends Component{
   static navigationOptions = {
     header: null
@@ -8,7 +8,7 @@ export default class LogIn extends Component{
     const {navigate} = this.props.navigation;
     return (
       <View>
-        <Text>Welcome To Stepme</Text>
+        <Text>Welcome To BendAid</Text>
         <TextInput placeholder="username"/>
         <TextInput secureTextEntry placeholder="password"/>
         <Button title="Log In"/>
