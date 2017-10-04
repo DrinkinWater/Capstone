@@ -8,7 +8,7 @@ const App = StackNavigator({
   ForgotPassword : {screen: ForgotPassword},
   SignUp : {screen: SignUp}
 },
-  {
-    headerMode: 'screen'
-  } )
+{
+  headerMode: 'screen'
+})
 export default App
