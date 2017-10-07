@@ -9,6 +9,7 @@ import BloodSugarLevel from "../screens/BloodSugarLevel"
 import Maps from "../screens/Maps"
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import Colors from '../constants/Colors'
 
 const Home = TabNavigator(
 	{
@@ -16,36 +17,44 @@ const Home = TabNavigator(
 			screen: Maps,
 			navigationOptions: {
 				title: 'Maps',
-				tabBarIcon: ({ tintColor }) => <Icon name="map" size={15} color={tintColor} />
+				tabBarIcon: ({ tintColor }) => <Icon name="map" size={28} color={tintColor} />
 			}
 		},
-		Maps: {
-			screen: SOS,
-			navigationOptions: {
-				title: 'SOS',
-				tabBarIcon: ({ tintColor }) => <Icon name="ambulance" size={15} color={tintColor} />
-			}
+		// Maps: {
+		// 	screen: SOS,
+		// 	navigationOptions: {
+		// 		title: 'SOS',
+		// 		tabBarIcon: ({ tintColor }) => <Icon name="ambulance" size={15} color={tintColor} />
+		// 	}
+		// },
 		UserProfile : {
 			screen: UserProfile,
 			navigationOptions: {
 				title: 'Profile',
-				tabBarIcon: ({ tintColor }) => <Icon name="user" size={15} color={tintColor} />
+				tabBarIcon: ({ tintColor }) => <Icon name="user" size={28} color={tintColor} />
 			}
 		},
-	}, 
+	},
 	{
 		tabBarPosition: 'bottom',
 		tabBarOptions: {
 			showIcon: true,
 			showLabel: false,
-			tabStyle: { 
-				padding: 10
-				
-			}
-
+			activeTintColor: Colors.lightBlue,
+			inactiveTintColor: Colors.grey,
+			tabStyle: {
+				padding: 20
+			},
+			style: {
+				backgroundColor: Colors.notSoWhite,
+				// boxShadow: '0 5px 25px rgba(54,67,77,0.15)',
+				// shadowColor: 'rgb(54, 67, 77)',
+				// shadowOpacity: 0.15,
+			},
+			renderIndicator: () => null
 		}
 	},
-	
+
 )
 
 const App = StackNavigator(
@@ -60,6 +69,6 @@ const App = StackNavigator(
 	},
   {
     headerMode: 'screen'
-  } 
+  }
 )
 export default App

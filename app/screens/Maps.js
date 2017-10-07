@@ -7,36 +7,36 @@ export default class Maps extends Component{
 	render(){
 		return(
 			<View>
-				<View style={styles.searchbar}>			
-					<Icon style={styles.searchicon} name="search" />			
+				<View style={styles.searchbar}>
+					<Icon style={styles.searchIcon} name="search" />
 					<TextInput style={styles.input} placeholder="Search"/>
 				</View>
 				<View style={styles.buttons}>
-					<Button style={styles.space} primary text ="Hospital"/>
-					<Button style={styles.space} primary text="Clinic"/>
+					<Button style={styles.xxx} primary text ="Hospital"/>
+					<Button style={styles.xxx} primary text="Clinic"/>
 				</View>
 			</View>
 			)
 		}
 	}
 	const styles = StyleSheet.create({
-  searchbar: {   
-		flexDirection:"row",
-  	alignItems: 'center',
-  	padding:5
-  },
-  searchicon:{
-  	padding:5
-  },
-  input:{
-  	flex: 1
- 	 },
- 	 buttons:{
- 	 	flexDirection:"row",
- 	 	justifyContent: 'center',
- 	 },
- 	 space:{
- 	 	margin:5
- 	 }
+	  searchbar: {
+			flexDirection: "row",
+	  	alignItems: 'center',
+	  	padding: 5
+	  },
+	  searchIcon: {
+	  	padding: 5
+	  },
+	  input: {
+			flex: 1
+		},
+		buttons: {
+			flexDirection: "row",
+			justifyContent: 'center',
+		},
+		space: {
+			margin: 5
+		}
 	}
 )
