@@ -62,7 +62,8 @@ const fetchApi = async (endpoint, method = 'get', body, headers = {}) => {
       await resetCredential()
     }
 
-    return new Error(errors)
+    return
+    // new Error(errors)
   }
   await persistToken(response)
   return await response.json()

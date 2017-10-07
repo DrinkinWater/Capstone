@@ -1,10 +1,10 @@
-const auth = (state = void 0, action) => {
+const auth = (state = null, action) => {
   switch (action.type) {
     case 'SET_CURRENT_USER':
       return action.user
       break;
     case 'REMOVE_CURRENT_USER':
-      return void 0;
+      return null;
       break;
     default:
       return state

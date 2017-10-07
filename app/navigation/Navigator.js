@@ -7,20 +7,22 @@ import UserProfile from '../screens/UserProfile'
 import MedicalRecords from "../screens/MedicalRecords"
 import { TabNavigator, StackNavigator } from 'react-navigation'
 
-const App = StackNavigator({
-  Splash: {
-    screen: Splash,
-    navigationOptions: {
-      header: () => null,
-    }
+const Navigator = StackNavigator(
+  {
+    Splash: {
+      screen: Splash,
+      navigationOptions: {
+        header: () => null,
+      }
+    },
+    LogIn : {screen: LogIn},
+    UserProfile : {screen: UserProfile},
+    MedicalRecords : {screen: MedicalRecords},
+    ForgotPassword : {screen: ForgotPassword},
+    SignUp : {screen: SignUp}
   },
-  LogIn : {screen: LogIn},
-  UserProfile : {screen: UserProfile},
-  MedicalRecords : {screen: MedicalRecords},
-  ForgotPassword : {screen: ForgotPassword},
-  SignUp : {screen: SignUp}
-},
-{
-  headerMode: 'screen'
-})
-export default App
+  {
+    headerMode: 'screen'
+  }
+)
+export default Navigator

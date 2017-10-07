@@ -8,6 +8,7 @@ export default class Splash extends Component {
     const { navigate } = this.props.navigation
 
     let response = await fetchApi('/auth/validate_token', 'get')
+
     if (response) {
       navigate('UserProfile')
     } else {

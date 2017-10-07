@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, TextInput, TouchableOpacity, Button } from 'react-native'
 import { connect } from 'react-redux'
 import { logInUser } from '../actions/auth'
+import { NavigationActions } from 'react-navigation';
 
 class LogIn extends Component{
   static navigationOptions = {
