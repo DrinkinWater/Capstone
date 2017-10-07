@@ -6,12 +6,12 @@
 		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"test": "jest",
 		"android-linux": "react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android"
-
 	},
 	"dependencies": {
 		"material-ui": "^0.19.3",
 		"react": "16.0.0-alpha.12",
 		"react-native": "0.48.3",
+		"react-native-secure-key-store": "^1.0.6",
 		"react-navigation": "^1.0.0-beta.11",
 		"react-redux": "^5.0.6",
 		"redux": "^3.7.2",

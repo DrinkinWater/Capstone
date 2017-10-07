@@ -1,5 +1,8 @@
-const test = (state = [], action) => {
-  return state
-}
+import { combineReducers } from 'redux'
+import auth from './auth'
 
-export default test
+const rootReducer = combineReducers({
+  auth
+})
+
+export default rootReducer

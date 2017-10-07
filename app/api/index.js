@@ -1,31 +1,49 @@
 import { API_ROOT } from '../config/api'
-import { AsyncStorage } from 'react-native'
+import RNSecureKeyStore from 'react-native-secure-key-store';
 
 const resetCredential = () => {
-  AsyncStorage.removeItem("access_token")
-  AsyncStorage.removeItem("client")
-  AsyncStorage.removeItem("uid")
+  RNSecureKeyStore.remove("access-token")
+  RNSecureKeyStore.remove("client")
+  RNSecureKeyStore.remove("uid")
 }
 
 const persistToken = (response) => {
   let token = response.headers.map['access-token'][0]
   let client = response.headers.map['client'][0]
   let uid = response.headers.map['uid'][0]
-  
-  AsyncStorage.setItem("access-token", token)
-  AsyncStorage.setItem("client", client)
-  AsyncStorage.setItem("uid", uid)
+
+  RNSecureKeyStore.set("access-token", token)
+  RNSecureKeyStore.set("client", client)
+  RNSecureKeyStore.set("uid", uid)
+}
+
+const tokenForHeader = async () => {
+  try {
+    let accessToken = await RNSecureKeyStore.get("access-token")
+    let client = await RNSecureKeyStore.get("client")
+    let uid = await RNSecureKeyStore.get("uid")
+
+    return {
+      'access-token': accessToken,
+      'client'      : client,
+      'uid'         : uid
+    }
+  } catch (e) {
+    return {}
+  }
 }
 
 const fetchApi = async (endpoint, method = 'get', body, headers = {}) => {
   let url = `${API_ROOT}${endpoint}`;
+  let tfh = await tokenForHeader()
 
   let config = {
     method: method,
     headers: new Headers({
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      ...headers
+      ...headers,
+      ...tfh
     }),
     body: JSON.stringify(body)
   }
@@ -35,14 +53,16 @@ const fetchApi = async (endpoint, method = 'get', body, headers = {}) => {
   const status = response.status;
 
   if (status !== 200) {
-    let errors = JSON.parse(response._bodyInit).errors.join(' ')
+    if (endpoint !== '/auth/validate_token') {
+      let errors = JSON.parse(response._bodyInit).errors.join(' ')
 
-    alert(`${errors} (Error code: ${status})`)
+      alert(`${errors} (Error code: ${status})`)
+    }
     if (status === 401) {
       await resetCredential()
     }
 
-    return
+    return new Error(errors)
   }
   await persistToken(response)
   return await response.json()
