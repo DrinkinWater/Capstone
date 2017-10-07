@@ -17,7 +17,7 @@ const Home = TabNavigator(
 			screen: Maps,
 			navigationOptions: {
 				title: 'Maps',
-				tabBarIcon: ({ tintColor }) => <Icon name="map" size={28} color={tintColor} />
+				tabBarIcon: ({ tintColor }) => <Icon name="map" size={26} color={tintColor} />
 			}
 		},
 		// Maps: {
@@ -31,19 +31,20 @@ const Home = TabNavigator(
 			screen: UserProfile,
 			navigationOptions: {
 				title: 'Profile',
-				tabBarIcon: ({ tintColor }) => <Icon name="user" size={28} color={tintColor} />
+				tabBarIcon: ({ tintColor }) => <Icon name="user" size={26} color={tintColor} />
 			}
 		},
 	},
 	{
 		tabBarPosition: 'bottom',
+		initialRouteName: 'UserProfile',
 		tabBarOptions: {
 			showIcon: true,
 			showLabel: false,
 			activeTintColor: Colors.lightBlue,
 			inactiveTintColor: Colors.grey,
 			tabStyle: {
-				padding: 15
+				padding: 12
 			},
 			style: {
 				backgroundColor: Colors.notSoWhite,
