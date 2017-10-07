@@ -43,7 +43,7 @@ const Home = TabNavigator(
 			activeTintColor: Colors.lightBlue,
 			inactiveTintColor: Colors.grey,
 			tabStyle: {
-				padding: 20
+				padding: 15
 			},
 			style: {
 				backgroundColor: Colors.notSoWhite,
