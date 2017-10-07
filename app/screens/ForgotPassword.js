@@ -1,4 +1,3 @@
-
 import React,{Component} from 'react'
 import {View,Text,TextInput,TouchableOpacity,Button} from 'react-native'
 export default class ForgotPassword extends Component{

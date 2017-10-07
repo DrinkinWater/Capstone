@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, Text, TextInput, TouchableOpacity, Button} from 'react-native'
 import { Avatar } from 'react-native-material-ui';
-
 export default class UserProfile extends Component{
 	static navigationOptions = {
     header: null
@@ -13,9 +12,10 @@ export default class UserProfile extends Component{
 				<Avatar icon="person" />
 	    	<Text style={styles.title}>Joseph Lim</Text>
 	    	<Text>45 years old</Text>
-	    	<Button title ="General Information"/>
+	    	<Button onPress={()=>navigate("UserDetails")} title="General Information"/>
 	    	<Button onPress={() => navigate("MedicalRecords")} title="My records >"/>
-	    	<Button title="Blood Sugar Records >"/>
+	    	<Button onPress={() => navigate("BloodSugarLevel")}title="Blood Sugar report >"/>
+	    	<TouchableOpacity onPress={() => navigate("LogIn")}><Text>Sign Out</Text></TouchableOpacity>
 
     	</View>
     	)
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		fontSize: 20,
-		color: 'white',
+		color: 'black',
 		textAlign: 'center'
 	}
 })
