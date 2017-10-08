@@ -4,6 +4,8 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import { Button } from 'react-native-material-ui'
 import { SearchBar } from '../components/Input'
 import { ButtonTab } from '../components/Tab'
+import { LocationList } from '../components/List'
+import { WhitePanel } from '../components/Panel'
 
 export default class Maps extends Component {
 	static navigationOptions = {
@@ -13,7 +15,17 @@ export default class Maps extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			activeTab: ""
+			activeTab: "",
+			results: [
+				{
+					name: 'Hospital Stephie',
+					distance: '1 cm'
+				},
+				{
+					name: 'Hospital Jeff',
+					distance: '5 km'
+				}
+			]
 		};
 
 		this.onTabSelected = this.onTabSelected.bind(this)
@@ -38,6 +50,16 @@ export default class Maps extends Component {
 						active={this.state.activeTab === 'Clinic'}>
 						Clinic
 					</ButtonTab>
+				</View>
+				<View style={styles.searchResults}>
+					<WhitePanel>
+						{this.state.results.map((result, index) => (
+							<LocationList
+								location={result}
+								onPress={e => alert("pressed!")}
+								key={index} />
+						))}
+					</WhitePanel>
 				</View>
 			</View>
 			)
@@ -65,6 +87,9 @@ export default class Maps extends Component {
 		},
 		space: {
 			margin: 5
+		},
+		searchResults: {
+			marginTop: 20
 		}
 	}
 )

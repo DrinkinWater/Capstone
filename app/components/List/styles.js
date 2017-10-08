@@ -5,11 +5,13 @@ const styles = StyleSheet.create({
   list: {
     paddingTop: 17,
     paddingBottom: 17,
-    paddingLeft: 10,
+    paddingLeft: 15,
+    paddingRight: 15,
     borderTopColor: Colors.lightGray,
     borderTopWidth: StyleSheet.hairlineWidth,
     flexDirection: 'row',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    alignItems: 'center'
   },
   listText: {
     fontSize: 18,
@@ -24,6 +26,16 @@ const styles = StyleSheet.create({
   },
   profileContent: {
     fontFamily: Platform.OS === 'android' ? 'sans-serif-light' : undefined
+  },
+  middleText: {
+    flex: 3,
+    marginLeft: 20
+  },
+  smallListText: {
+    fontSize: 14
+  },
+  locationIcon: {
+    flex: 1
   }
 })
 
