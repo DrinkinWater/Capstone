@@ -19,12 +19,7 @@ const Home = TabNavigator(
 				tabBarIcon: ({ tintColor }) => <Icon name="map" size={15} color={tintColor} />
 			}
 		},
-		Maps: {
-			screen: SOS,
-			navigationOptions: {
-				title: 'SOS',
-				tabBarIcon: ({ tintColor }) => <Icon name="ambulance" size={15} color={tintColor} />
-			}
+
 		UserProfile : {
 			screen: UserProfile,
 			navigationOptions: {
@@ -32,7 +27,7 @@ const Home = TabNavigator(
 				tabBarIcon: ({ tintColor }) => <Icon name="user" size={15} color={tintColor} />
 			}
 		},
-	}, 
+	},
 	{
 		tabBarPosition: 'bottom',
 		tabBarOptions: {
