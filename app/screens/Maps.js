@@ -15,15 +15,25 @@ export default class Maps extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			activeTab: "",
+			activeTab: "Hospital",
 			results: [
 				{
 					name: 'Hospital Stephie',
-					distance: '1 cm'
+					distance: '1 cm',
+					eta: 'ETA 1 min',
+					type: 'Hospital'
 				},
 				{
 					name: 'Hospital Jeff',
-					distance: '5 km'
+					distance: '5 km',
+					eta: 'ETA 10 mins',
+					type: 'Hospital'
+				},
+				{
+					name: 'Clinic Joseph',
+					distance: '3 km',
+					eta: 'ETA 4 mins',
+					type: 'Clinic'
 				}
 			]
 		};
@@ -33,6 +43,10 @@ export default class Maps extends Component {
 
 	onTabSelected(tab) {
 		this.setState({activeTab: tab})
+	}
+
+	getActiveResults() {
+		return this.state.results.filter(r => r.type === this.state.activeTab)
 	}
 
 	render() {
@@ -53,7 +67,7 @@ export default class Maps extends Component {
 				</View>
 				<View style={styles.searchResults}>
 					<WhitePanel>
-						{this.state.results.map((result, index) => (
+						{this.getActiveResults().map((result, index) => (
 							<LocationList
 								location={result}
 								onPress={e => alert("pressed!")}

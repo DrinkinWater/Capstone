@@ -9,7 +9,8 @@ const LocationList = ({ onPress, location }) => (
       <Icon name="hospital-o" size={25} />
       <View style={styles.middleText}>
         <Text style={styles.listText}>{location.name}</Text>
-        <Text style={styles.smallListText}>{location.distance} away</Text>
+        <Text style={styles.extraSmallListText}>{location.distance} away</Text>
+        <Text style={styles.smallListText}>{location.eta} away</Text>
       </View>
       <Icon name="long-arrow-right" size={25} />
     </View>

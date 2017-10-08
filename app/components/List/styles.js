@@ -36,6 +36,10 @@ const styles = StyleSheet.create({
   },
   locationIcon: {
     flex: 1
+  },
+  extraSmallListText: {
+    fontSize: 12,
+    fontFamily: Platform.OS === 'android' ? 'sans-serif-light' : undefined
   }
 })
 
