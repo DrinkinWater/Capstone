@@ -5,7 +5,9 @@ const Colors = {
   lightBlue: 'rgb(132, 177, 237)',
   lightPurple: 'rgb(200, 158, 196)',
   lightRed: 'rgb(238, 119, 133)',
-  lightGreen: 'rgb(103, 213, 181)'
+  lightGreen: 'rgb(103, 213, 181)',
+  whiteSmoke: 'rgb(245, 245, 245)',
+  lightGray: 'rgb(215, 216, 218)'
 }
 
 export default Colors

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { View, StyleSheet, Text, TouchableOpacity, TouchableNativeFeedback, Platform, ScrollView } from 'react-native'
 import { Avatar } from 'react-native-material-ui';
 import { RoundedButton } from '../components/Button'
+import { MenuList } from '../components/List'
+import Colors from '../constants/Colors'
 
 export default class UserProfile extends Component{
 	static navigationOptions = {
@@ -24,11 +26,15 @@ export default class UserProfile extends Component{
 					</View>
 
 					<View style={styles.bottomDetails}>
-						<TouchableOpacity onPress={() => navigate("MedicalRecords")}>
-							<Text>Medical Records</Text>
-						</TouchableOpacity>
-						<TouchableOpacity onPress={() => navigate("BloodSugarLevel")}title="Blood Sugar report >"/>
-						<TouchableOpacity onPress={() => navigate("LogIn")}><Text>Sign Out</Text></TouchableOpacity>
+						<MenuList onPress={() => navigate("MedicalRecords")}>
+							Medical Records
+						</MenuList>
+						<MenuList onPress={() => navigate("BloodSugarLevel")}>
+							Blood Sugar report
+						</MenuList>
+						<MenuList onPress={() => navigate("LogIn")}>
+							Sign Out
+						</MenuList>
 					</View>
 				</ScrollView>
     	</View>
@@ -39,7 +45,7 @@ export default class UserProfile extends Component{
 const styles = StyleSheet.create({
 	profile: {
 		justifyContent: 'space-between',
-		alignItems: 'center',
+		alignItems: 'stretch',
 		padding: 20
 	},
 	topDetails: {
@@ -51,7 +57,11 @@ const styles = StyleSheet.create({
 	bottomDetails: {
 		flex: 3,
 		justifyContent: 'space-between',
-		alignItems: 'center',
+		alignItems: 'stretch',
+		backgroundColor: Colors.white,
+		borderRadius: 4,
+		paddingLeft: 10,
+		paddingRight: 10,
 	},
 	title: {
 		fontSize: 30,
