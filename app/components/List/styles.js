@@ -14,6 +14,16 @@ const styles = StyleSheet.create({
   listText: {
     fontSize: 18,
     fontFamily: Platform.OS === 'android' ? 'sans-serif-light' : undefined
+  },
+  profileInfo: {
+    marginBottom: 30
+  },
+  profileTitle: {
+    fontSize: 16,
+		fontWeight: '700'
+  },
+  profileContent: {
+    fontFamily: Platform.OS === 'android' ? 'sans-serif-light' : undefined
   }
 })
 

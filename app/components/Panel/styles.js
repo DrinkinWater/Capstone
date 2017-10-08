@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
 		alignItems: 'stretch',
 		backgroundColor: Colors.white,
 		borderRadius: 4,
-		paddingLeft: 10,
-		paddingRight: 10,
 	},
 })
+
+export default styles

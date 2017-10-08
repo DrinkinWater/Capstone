@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, TouchableOpacity, TouchableNativeFeedback, Plat
 import { Avatar } from 'react-native-material-ui';
 import { RoundedButton } from '../components/Button'
 import { MenuList } from '../components/List'
+import { WhitePanel } from '../components/Panel'
 import Colors from '../constants/Colors'
 
 export default class UserProfile extends Component{
@@ -26,15 +27,17 @@ export default class UserProfile extends Component{
 					</View>
 
 					<View style={styles.bottomDetails}>
-						<MenuList onPress={() => navigate("MedicalRecords")}>
-							Medical Records
-						</MenuList>
-						<MenuList onPress={() => navigate("BloodSugarLevel")}>
-							Blood Sugar report
-						</MenuList>
-						<MenuList onPress={() => navigate("LogIn")}>
-							Sign Out
-						</MenuList>
+						<WhitePanel>
+							<MenuList onPress={() => navigate("MedicalRecords")}>
+								Medical Records
+							</MenuList>
+							<MenuList onPress={() => navigate("BloodSugarLevel")}>
+								Blood Sugar report
+							</MenuList>
+							<MenuList onPress={() => navigate("LogIn")}>
+								Sign Out
+							</MenuList>
+						</WhitePanel>
 					</View>
 				</ScrollView>
     	</View>
@@ -56,12 +59,6 @@ const styles = StyleSheet.create({
 	},
 	bottomDetails: {
 		flex: 3,
-		justifyContent: 'space-between',
-		alignItems: 'stretch',
-		backgroundColor: Colors.white,
-		borderRadius: 4,
-		paddingLeft: 10,
-		paddingRight: 10,
 	},
 	title: {
 		fontSize: 30,
