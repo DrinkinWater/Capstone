@@ -1,10 +1,14 @@
-import React,{Component} from 'react'
-import {View,Text,TextInput,TouchableOpacity,StyleSheet} from 'react-native'
+import React,{ Component } from 'react'
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { Button } from 'react-native-material-ui'
 
-export default class Maps extends Component{
-	render(){
+export default class Maps extends Component {
+	static navigationOptions = {
+    header: null
+  };
+
+	render() {
 		return(
 			<View>
 				<View style={styles.searchbar}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableNativeFeedback, Text, Platform, View } from 'react-native';
+import { TouchableHighlight, Text, Platform, View } from 'react-native';
 import PropTypes from 'prop-types';
 import Colors from '../../constants/Colors';
 
@@ -7,16 +7,15 @@ import styles from './styles';
 
 const RoundedButton = ({ onPress, title, style }) =>
   (
-    <View style={[styles.roundedButton, style]}>
-      <TouchableNativeFeedback
-        background={Platform.OS === 'android' ? TouchableNativeFeedback.SelectableBackground() : ''}
-        onPress={onPress}
-        underlayColor={ 'transparent' } >
-        <Text style={styles.roundedButtonText}>
-          {title}
-        </Text>
-      </TouchableNativeFeedback>
-    </View>
+    <TouchableHighlight
+      onPress={onPress}
+      underlayColor={ 'transparent' } >
+      <View style={[styles.roundedButton, style]}>
+              <Text style={styles.roundedButtonText}>
+                {title}
+              </Text>
+      </View>
+    </TouchableHighlight>
   );
 
 RoundedButton.propTypes = {
