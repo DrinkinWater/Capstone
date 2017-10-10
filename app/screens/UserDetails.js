@@ -6,7 +6,7 @@ import { ProfileInfo } from '../components/List'
 
 export default class UserDetails extends Component {
 	static navigationOptions = {
-    header: () => null,
+    header: null
   }
 	render() {
 		const { navigate } = this.props.navigation;

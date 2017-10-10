@@ -41,7 +41,7 @@ const Home = TabNavigator(
 	},
 	{
 		tabBarPosition: 'bottom',
-		initialRouteName: 'UserProfile',
+		// initialRouteName: 'UserProfile',
 		tabBarOptions: {
 			showIcon: true,
 			showLabel: false,

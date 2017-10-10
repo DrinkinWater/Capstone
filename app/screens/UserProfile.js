@@ -32,7 +32,7 @@ export default class UserProfile extends Component{
 								Medical Records
 							</MenuList>
 							<MenuList onPress={() => navigate("BloodSugarLevel")}>
-								Blood Sugar report
+								Blood Sugar Report
 							</MenuList>
 							<MenuList onPress={() => navigate("LogIn")}>
 								Sign Out

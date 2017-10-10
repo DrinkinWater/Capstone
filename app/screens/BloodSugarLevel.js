@@ -4,28 +4,22 @@ import { Avatar } from 'react-native-material-ui'
 import  Icon from 'react-native-vector-icons/Ionicons';
 
 export default class BloodSugarLevel extends Component {
+  static navigationOptions = {
+    title: 'Your Blood Sugar Level'
+  }
   render() {
   	return(
 	  	<View style={styles.container}>
 	  	  <Text>Graph</Text>
-	  		<Text>Averages</Text>
+	  		<Text style={styles.title}>Averages</Text>
 
 	  		<View style={[styles.row, styles.head]}>
-		  		<Text>Before Breakfast</Text>
-		  		<Text>Before Lunch</Text>
-		  		<Text>Before Dinner</Text>
+		  		<Text>Bf. Breakfast</Text>
+		  		<Text>Bf. Lunch</Text>
+		  		<Text>Bf. Dinner</Text>
 	  		</View>
 
-	  		<Text style={styles.title}>Week</Text>
-	  		
-	  		<View style={styles.row}>
-		  		<Icon name="ios-water" color="red" size={30} />
-		  		<Text>6.9 mmol/L</Text>
-		  		<Text>6.9 mmol/L</Text>
-		  		<Text>6.9 mmol/L</Text>
-	  		</View>
-
-	  		<Text style={styles.title}>Past 1 month</Text>
+	  		<Text style={styles.smallTitle}>Week</Text>
 
 	  		<View style={styles.row}>
 		  		<Icon name="ios-water" color="red" size={30} />
@@ -34,7 +28,16 @@ export default class BloodSugarLevel extends Component {
 		  		<Text>6.9 mmol/L</Text>
 	  		</View>
 
-	  		<Text style={styles.title}>Past 3 months</Text>
+	  		<Text style={styles.smallTitle}>Past 1 month</Text>
+
+	  		<View style={styles.row}>
+		  		<Icon name="ios-water" color="red" size={30} />
+		  		<Text>6.9 mmol/L</Text>
+		  		<Text>6.9 mmol/L</Text>
+		  		<Text>6.9 mmol/L</Text>
+	  		</View>
+
+	  		<Text style={styles.smallTitle}>Past 3 months</Text>
 
 	  		<View style={styles.row}>
 		  		<Icon name="ios-water" color="red" size={30} />
@@ -55,10 +58,15 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "space-between",
 		alignItems: 'center',
-		marginBottom: 10
+		marginBottom: 20
 	},
-	title: {
-		marginBottom: 5,
+  title: {
+    fontSize: 20,
+    fontWeight: '700',
+    marginBottom: 20,
+  },
+	smallTitle: {
+		marginBottom: 10,
 		fontSize: 15,
 		fontWeight: "700"
 	},
