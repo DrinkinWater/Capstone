@@ -13,11 +13,11 @@ export default class ViewContainer extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#52B9D1',
+    // backgroundColor: '#52B9D1',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row'
   }
- 
+
 })
