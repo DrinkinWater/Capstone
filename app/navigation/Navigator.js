@@ -6,6 +6,7 @@ import UserProfile from '../screens/UserProfile'
 import MedicalRecords from "../screens/MedicalRecords"
 import UserDetails from "../screens/UserDetails"
 import BloodSugarLevel from "../screens/BloodSugarLevel"
+import AddBloodSugarRecord from "../screens/AddBloodSugarRecord"
 import Maps from "../screens/Maps"
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import Icon from 'react-native-vector-icons/FontAwesome'
@@ -20,17 +21,17 @@ const Home = TabNavigator(
 				tabBarIcon: ({ tintColor }) => <Icon name="map" size={26} color={tintColor} />
 			}
 		},
-<<<<<<< HEAD
+// <<<<<<< HEAD
 
-=======
-		// Maps: {
-		// 	screen: SOS,
-		// 	navigationOptions: {
-		// 		title: 'SOS',
-		// 		tabBarIcon: ({ tintColor }) => <Icon name="ambulance" size={15} color={tintColor} />
-		// 	}
-		// },
->>>>>>> 54e24193df235f8f0fc2958d4fee4a5bf5d59eaf
+// =======
+// 		// Maps: {
+// 		// 	screen: SOS,
+// 		// 	navigationOptions: {
+// 		// 		title: 'SOS',
+// 		// 		tabBarIcon: ({ tintColor }) => <Icon name="ambulance" size={15} color={tintColor} />
+// 		// 	}
+// 		// },
+// >>>>>>> 54e24193df235f8f0fc2958d4fee4a5bf5d59eaf
 		UserProfile : {
 			screen: UserProfile,
 			navigationOptions: {
@@ -69,6 +70,7 @@ const App = StackNavigator(
 	  MedicalRecords : {screen: MedicalRecords},
 	  ForgotPassword : {screen: ForgotPassword},
 	  SignUp : {screen: SignUp},
+	  AddBloodSugarRecord : {screen: AddBloodSugarRecord},
 	  UserDetails : {screen: UserDetails},
 	  BloodSugarLevel : {screen: BloodSugarLevel}
 	},

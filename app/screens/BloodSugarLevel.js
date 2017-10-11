@@ -1,13 +1,15 @@
 import React,{Component} from 'react'
 import { View, Text, TextInput, TouchableOpacity, Button, StyleSheet } from 'react-native'
 import { Avatar } from 'react-native-material-ui'
-import  Icon from 'react-native-vector-icons/Ionicons';
+import Colors from '../constants/Colors'
+import  Icon from 'react-native-vector-icons/Ionicons' ;
 
 export default class BloodSugarLevel extends Component {
   static navigationOptions = {
     title: 'Your Blood Sugar Level'
   }
   render() {
+  	const {navigate} = this.props.navigation;
   	return(
 	  	<View style={styles.container}>
 	  	  <Text>Graph</Text>
@@ -45,12 +47,24 @@ export default class BloodSugarLevel extends Component {
 		  		<Text>6.9 mmol/L</Text>
 		  		<Text>6.9 mmol/L</Text>
 	  		</View>
+
+	  		<View style={styles.addIcon}>
+	  			<TouchableOpacity onPress={() => navigate("AddBloodSugarRecord")}>
+	  			<Icon name="ios-add-circle-outline" color={Colors.lightRed} size={30}/>
+	  			</TouchableOpacity>
+	  		</View>
 	  	</View>
   	)
   }
 }
 
 const styles = StyleSheet.create({
+	addIcon:{
+  	padding: 20,
+		justifyContent: 'space-between',
+		alignItems: 'center',
+		
+	},
 	container: {
 		padding: 20
 	},
