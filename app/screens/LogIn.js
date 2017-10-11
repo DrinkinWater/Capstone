@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, TouchableOpacity, Button } from 'react-native'
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Button } from 'react-native'
 import { connect } from 'react-redux'
 import { logInUser } from '../actions/auth'
 import { NavigationActions } from 'react-navigation';
+import { Button } from 'react-native-material-ui'
 
 class LogIn extends Component{
   static navigationOptions = {
@@ -48,6 +49,19 @@ class LogIn extends Component{
     )
   }
 }
+
+const styles = StyleSheet.create({
+  profile: {
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 20
+  },
+  title: {
+    fontSize: 20,
+    color: 'black',
+    textAlign: 'center'
+  }
+})
 
 const mapDispatchToProps = disptach => ({
   login: params => {
