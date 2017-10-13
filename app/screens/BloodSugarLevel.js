@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
-import { View, Text, TextInput, TouchableOpacity, Button, StyleSheet } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Button, StyleSheet,ScrollView } from 'react-native'
 import { Avatar } from 'react-native-material-ui'
+import { RoundedButton } from '../components/Button'
 import Colors from '../constants/Colors'
 import  Icon from 'react-native-vector-icons/Ionicons' ;
 
@@ -11,49 +12,50 @@ export default class BloodSugarLevel extends Component {
   render() {
   	const {navigate} = this.props.navigation;
   	return(
-	  	<View style={styles.container}>
-	  	  <Text>Graph</Text>
-	  		<Text style={styles.title}>Averages</Text>
+  		<ScrollView>
+		  	<View style={styles.container}>
+		  		<Text style={styles.title}>Averages</Text>
 
-	  		<View style={[styles.row, styles.head]}>
-		  		<Text>Bf. Breakfast</Text>
-		  		<Text>Bf. Lunch</Text>
-		  		<Text>Bf. Dinner</Text>
-	  		</View>
+		  		<View style={[styles.row, styles.head]}>
+			  		<Text>Bf. Breakfast</Text>
+			  		<Text>Bf. Lunch</Text>
+			  		<Text>Bf. Dinner</Text>
+		  		</View>
 
-	  		<Text style={styles.smallTitle}>Week</Text>
+		  		<Text style={styles.smallTitle}>Week</Text>
 
-	  		<View style={styles.row}>
-		  		<Icon name="ios-water" color="red" size={30} />
-		  		<Text>6.9 mmol/L</Text>
-		  		<Text>6.9 mmol/L</Text>
-		  		<Text>6.9 mmol/L</Text>
-	  		</View>
+		  		<View style={styles.row}>
+			  		<Icon name="ios-water" color="red" size={30} />
+			  		<Text>6.9 mmol/L</Text>
+			  		<Text>6.9 mmol/L</Text>
+			  		<Text>6.9 mmol/L</Text>
+		  		</View>
 
-	  		<Text style={styles.smallTitle}>Past 1 month</Text>
+		  		<Text style={styles.smallTitle}>Past 1 month</Text>
 
-	  		<View style={styles.row}>
-		  		<Icon name="ios-water" color="red" size={30} />
-		  		<Text>6.9 mmol/L</Text>
-		  		<Text>6.9 mmol/L</Text>
-		  		<Text>6.9 mmol/L</Text>
-	  		</View>
+		  		<View style={styles.row}>
+			  		<Icon name="ios-water" color="red" size={30} />
+			  		<Text>6.9 mmol/L</Text>
+			  		<Text>6.9 mmol/L</Text>
+			  		<Text>6.9 mmol/L</Text>
+		  		</View>
 
-	  		<Text style={styles.smallTitle}>Past 3 months</Text>
+		  		<Text style={styles.smallTitle}>Past 3 months</Text>
 
-	  		<View style={styles.row}>
-		  		<Icon name="ios-water" color="red" size={30} />
-		  		<Text>6.9 mmol/L</Text>
-		  		<Text>6.9 mmol/L</Text>
-		  		<Text>6.9 mmol/L</Text>
-	  		</View>
+		  		<View style={styles.row}>
+			  		<Icon name="ios-water" color="red" size={30} />
+			  		<Text>6.9 mmol/L</Text>
+			  		<Text>6.9 mmol/L</Text>
+			  		<Text>6.9 mmol/L</Text>
+		  		</View>
 
-	  		<View style={styles.addIcon}>
-	  			<TouchableOpacity onPress={() => navigate("AddBloodSugarRecord")}>
-	  			<Icon name="ios-add-circle-outline" color={Colors.lightRed} size={30}/>
-	  			</TouchableOpacity>
-	  		</View>
-	  	</View>
+		  		<View style={styles.addIcon}>
+		  			<RoundedButton
+								onPress={()=>navigate("AddBloodSugarRecord")}
+								title="Add New Records" />
+		  		</View>
+		  	</View>
+	  	</ScrollView>
   	)
   }
 }
