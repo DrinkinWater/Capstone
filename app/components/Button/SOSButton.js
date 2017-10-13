@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import Colors from '../../constants/Colors';
 import styles from './styles';
 
-const RoundedButton = ({ onPress, title, style }) =>
+const SOSButton = ({ onPress, title, style }) =>
   (
     <TouchableHighlight
       onPress={onPress}
       underlayColor={ 'transparent' } >
-      <View style={[styles.roundedButton, style]}>
+      <View style={[styles.SOSButton, style]}>
               <Text style={styles.roundedButtonText}>
                 {title}
               </Text>
@@ -17,8 +17,8 @@ const RoundedButton = ({ onPress, title, style }) =>
     </TouchableHighlight>
   );
 
-RoundedButton.propTypes = {
+SOSButton.propTypes = {
   onPress: PropTypes.func,
 };
 
-export default RoundedButton;
+export default SOSButton;

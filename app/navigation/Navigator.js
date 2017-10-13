@@ -6,6 +6,7 @@ import UserProfile from '../screens/UserProfile'
 import MedicalRecords from "../screens/MedicalRecords"
 import UserDetails from "../screens/UserDetails"
 import BloodSugarLevel from "../screens/BloodSugarLevel"
+import SOS from "../screens/SOS"
 import AddBloodSugarRecord from "../screens/AddBloodSugarRecord"
 import EditUserProfile from "../screens/EditUserProfile"
 import Maps from "../screens/Maps"
@@ -20,6 +21,14 @@ const Home = TabNavigator(
 			navigationOptions: {
 				title: 'Maps',
 				tabBarIcon: ({ tintColor }) => <Icon name="map" size={26} color={tintColor} />
+			}
+		},
+
+		SOS: {
+			screen: SOS,
+			navigationOptions: {
+				title: 'SOS',
+				tabBarIcon: ({ tintColor}) => <Icon name="ambulance" size={26} color={tintColor}/>
 			}
 		},
 
