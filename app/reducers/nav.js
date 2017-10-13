@@ -5,7 +5,6 @@ import Navigator from '../navigation/Navigator';
 const initialState = Navigator.router.getStateForAction(Navigator.router.getActionForPathAndParams('Splash'));
 
 export default (state = initialState, action) => {
-  debugger
   const nextState = Navigator.router.getStateForAction(action, state);
 
   return nextState || state;
