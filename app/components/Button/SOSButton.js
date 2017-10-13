@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import Colors from '../../constants/Colors';
 import styles from './styles';
 
-const SOSButton = ({ onPress, title, style }) =>
+const SOSButton = ({ onLongPress, title, style }) =>
   (
     <TouchableHighlight
-      onPress={onPress}
+      onLongPress={onLongPress}
       underlayColor={ 'transparent' } >
       <View style={[styles.SOSButton, style]}>
               <Text style={styles.roundedButtonText}>
@@ -18,7 +18,7 @@ const SOSButton = ({ onPress, title, style }) =>
   );
 
 SOSButton.propTypes = {
-  onPress: PropTypes.func,
+  onLongPress: PropTypes.func,
 };
 
 export default SOSButton;

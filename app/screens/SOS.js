@@ -13,10 +13,10 @@ export default class SOS extends Component {
 		const { navigate } = this.props.navigation;
 
 		return (
-			<View addIcon>
-					<SOSButton
-								onPress={()=>navigate("AddBloodSugarRecord")}
-								title="HELP ME!" />
+			<View style={styles.addIcon}>
+				<SOSButton
+					onLongPress={() => alert('yay')}
+					title="HELP ME!" />
 			</View>
 			)
 	}
@@ -25,8 +25,8 @@ export default class SOS extends Component {
 const styles = StyleSheet.create({
 	addIcon:{
   	padding: 20,
-		justifyContent: 'space-around',
+		justifyContent: 'center',
 		alignItems: 'center',
-		
+
 	}
 	})

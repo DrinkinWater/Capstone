@@ -10,15 +10,15 @@ export default StyleSheet.create({
     height: 42,
 		backgroundColor: Colors.lightRed,
 	},
-    
-    SOSButton: {
-        alignItems: 'center',
+
+  SOSButton: {
+    alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 150,
     width: 240,
     height: 240,
     backgroundColor: Colors.chartreuse,
-    },
+  },
 
 	roundedButtonText: {
 		fontSize: 15,
