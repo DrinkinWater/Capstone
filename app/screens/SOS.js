@@ -16,7 +16,7 @@ export default class SOS extends Component {
 			<View style={styles.addIcon}>
 				<SOSButton
 					onLongPress={() => alert('yay')}
-					title="HELP ME!" />
+					title="Help Me!" />
 			</View>
 			)
 	}
