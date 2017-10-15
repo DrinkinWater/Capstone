@@ -10,6 +10,14 @@ export default StyleSheet.create({
     height: 42,
 		backgroundColor: Colors.lightRed,
 	},
+    roundedButton1: {
+        alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 100,
+    width: 240,
+    height: 42,
+        backgroundColor: Colors.lightBlue,
+    },
 
   SOSButton: {
     alignItems: 'center',
@@ -17,7 +25,7 @@ export default StyleSheet.create({
     borderRadius: 150,
     width: 240,
     height: 240,
-    backgroundColor: Colors.chartreuse,
+    backgroundColor: Colors.red,
   },
 
 	roundedButtonText: {

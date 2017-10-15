@@ -9,13 +9,23 @@ import BloodSugarLevel from "../screens/BloodSugarLevel"
 import SOS from "../screens/SOS"
 import AddBloodSugarRecord from "../screens/AddBloodSugarRecord"
 import EditUserProfile from "../screens/EditUserProfile"
+import Reminder from "../screens/Reminder"
 import Maps from "../screens/Maps"
 import { TabNavigator, StackNavigator } from 'react-navigation'
+import AddReminder from "../screens/AddReminder"
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Colors from '../constants/Colors'
 
 const Home = TabNavigator(
 	{
+		Reminder: {
+    	screen: Reminder,
+    	navigationOptions: {
+    		title: 'Reminder',
+    		tabBarIcon: ({ tintColor }) => <Icon name="calendar" size={26} color={tintColor} />
+    	}
+		},
+
 		Maps: {
 			screen: Maps,
 			navigationOptions: {
@@ -73,7 +83,8 @@ const App = StackNavigator(
 	  AddBloodSugarRecord : {screen: AddBloodSugarRecord},
 	  UserDetails : {screen: UserDetails},
 	  BloodSugarLevel : {screen: BloodSugarLevel},
-	  EditUserProfile : {screen: EditUserProfile}
+	  EditUserProfile : {screen: EditUserProfile},
+	  AddReminder : {screen: AddReminder}
 	},
   {
     headerMode: 'screen'

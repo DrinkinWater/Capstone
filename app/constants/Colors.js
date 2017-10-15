@@ -9,7 +9,8 @@ const Colors = {
   whiteSmoke: 'rgb(245, 245, 245)',
   lightGray: 'rgb(215, 216, 218)',
   transparent: 'rgba(0, 0, 0, 0)',
-  chartreuse: 'rgb(127,255,0)'
+  chartreuse: 'rgb(127,255,0)',
+  red: 'rgb(255,0,0)'
 
 }
 
