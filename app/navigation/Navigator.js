@@ -11,6 +11,7 @@ import AddBloodSugarRecord from "../screens/AddBloodSugarRecord"
 import EditUserProfile from "../screens/EditUserProfile"
 import Reminder from "../screens/Reminder"
 import Maps from "../screens/Maps"
+import FoodSuggestion from "../screens/FoodSuggestion"
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import AddReminder from "../screens/AddReminder"
 import Icon from 'react-native-vector-icons/FontAwesome'
@@ -42,6 +43,14 @@ const Home = TabNavigator(
 			}
 		},
 
+		FoodSuggestion : {
+			screen: FoodSuggestion,
+			navigationOptions: {
+				title: 'FoodSuggestion',
+				tabBarIcon: ({ tintColor }) => <Icon name="cutlery" size={26} color={tintColor} />
+			}
+		},
+
 		UserProfile : {
 			screen: UserProfile,
 			navigationOptions: {
@@ -49,6 +58,8 @@ const Home = TabNavigator(
 				tabBarIcon: ({ tintColor }) => <Icon name="user" size={26} color={tintColor} />
 			}
 		},
+
+		
 	},
 	{
 		tabBarPosition: 'bottom',

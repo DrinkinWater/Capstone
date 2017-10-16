@@ -10,6 +10,7 @@ export default class AddReminder extends Component {
   static navigationOptions = {
     title: 'New Reminder'
   }
+
   render() {
   	const {navigate} = this.props.navigation;
   	return(
@@ -28,8 +29,9 @@ export default class AddReminder extends Component {
 	  		</WhitePanel>
 	  		<View style={styles.addIcon}>
 		  		<RoundedButton
-								onPress={() => alert('Request Sent')}
+								onPress={() => alert('Saved')}
 								title="Save" />
+								
 				</View>
 			</View>
   		)
