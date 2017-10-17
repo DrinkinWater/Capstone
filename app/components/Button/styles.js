@@ -17,11 +17,12 @@ export default StyleSheet.create({
     borderRadius: 150,
     width: 240,
     height: 240,
-    backgroundColor: Colors.chartreuse,
+    backgroundColor: Colors.turqoise
+
   },
 
 	roundedButtonText: {
-		fontSize: 15,
+		fontSize: 20,
     fontWeight: 'bold',
     lineHeight: 14,
     backgroundColor: 'transparent',

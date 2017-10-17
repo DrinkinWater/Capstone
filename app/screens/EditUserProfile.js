@@ -21,7 +21,7 @@ export default class EditUserDetails extends Component {
 					</View>
 					<View style={styles.topDetails}>
 						<Text style={styles.title}>Joseph Lim</Text>
-						<Text style={styles.subTitle}>45 years old</Text>
+						<Text style={styles.subTitle}>70 years old</Text>
 						<Text>011212131</Text>
 					</View>
 				</View>
@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
 	},
 	whitePanel: {
 		padding: 15,
+
 	},
 	title: {
 		fontSize: 20,

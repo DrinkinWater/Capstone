@@ -5,6 +5,7 @@ import { WhitePanel } from '../components/Panel'
 import { ProfileInfo } from '../components/List'
 import {SOSButton} from '../components/Button'
 
+
 export default class SOS extends Component {
 	static navigationOptions = {
     header : null
@@ -14,19 +15,27 @@ export default class SOS extends Component {
 
 		return (
 			<View style={styles.addIcon}>
-				<SOSButton
+				<SOSButton 
 					onLongPress={() => alert('yay')}
-					title="Help Me!" />
+					title ="Help Me" />
+					
 			</View>
+
+			
+		
 			)
 	}
 }
 
 const styles = StyleSheet.create({
+	
 	addIcon:{
-  	padding: 20,
+  	padding: 30,
 		justifyContent: 'center',
 		alignItems: 'center',
 
+
 	}
+	
+
 	})
