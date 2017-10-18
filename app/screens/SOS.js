@@ -5,6 +5,7 @@ import { WhitePanel } from '../components/Panel'
 import { ProfileInfo } from '../components/List'
 import {SOSButton} from '../components/Button'
 
+
 export default class SOS extends Component {
 	static navigationOptions = {
     header : null
@@ -13,6 +14,7 @@ export default class SOS extends Component {
 		const { navigate } = this.props.navigation;
 
 		return (
+
       <View>
       <ScrollView>
 				<View style={styles.addIcon}>
@@ -30,6 +32,10 @@ export default class SOS extends Component {
 					<Text>761112-10-1121</Text>
 					<Text style={styles.title}>Gender:</Text>
 					<Text>Male</Text>
+					<Text style={styles.title}>Height:</Text>
+					<Text>179 cm</Text>
+					<Text style={styles.title}>Weight:</Text>
+					<Text>65 kg</Text>
 					<Text style={styles.title}>Blood Type:</Text>
 					<Text>AB-</Text>
 					<Text style={styles.title}>Active Problem:</Text>
@@ -51,13 +57,15 @@ export default class SOS extends Component {
 				 </View>
 			</ScrollView>
 			</View>	
+
 			)
 	}
 }
 
 const styles = StyleSheet.create({
+	
 	addIcon:{
-  	padding: 20,
+  	padding: 30,
 		justifyContent: 'center',
 		alignItems: 'center',
 
@@ -72,5 +80,8 @@ const styles = StyleSheet.create({
 	},
 		textbox: {
 			padding:10
+
 	}
+	
+
 	})

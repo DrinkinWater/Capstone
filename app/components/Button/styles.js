@@ -25,14 +25,26 @@ export default StyleSheet.create({
     borderRadius: 150,
     width: 240,
     height: 240,
-    backgroundColor: Colors.red,
+
+    backgroundColor: Colors.turqoise
+
+
   },
 
 	roundedButtonText: {
-		fontSize: 15,
+		fontSize: 20,
     fontWeight: 'bold',
     lineHeight: 14,
     backgroundColor: 'transparent',
     color: Colors.white,
-	}
+	},
+
+    SOSButtonText: {
+        fontSize: 30,
+    fontWeight: 'bold',
+    lineHeight: 30,
+    backgroundColor: 'transparent',
+    color: Colors.white,
+    },
+
 })

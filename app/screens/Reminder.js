@@ -81,9 +81,9 @@ export default class Reminder extends Component {
 					<View style={styles.addIcon}>
 		  			<RoundedButton
 							onPress={()=>navigate("AddReminder")}
-							title="Add New" />
+							title="New Reminder" />
 		  		</View>
-
+  
 				</View>
 			</View>
 			)

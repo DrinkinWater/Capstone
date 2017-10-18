@@ -10,7 +10,7 @@ const SOSButton = ({ onLongPress, title, style }) =>
       onLongPress={onLongPress}
       underlayColor={ 'transparent' } >
       <View style={[styles.SOSButton, style]}>
-              <Text style={styles.roundedButtonText}>
+              <Text style={styles.SOSButtonText}>
                 {title}
               </Text>
       </View>

@@ -12,6 +12,7 @@ import EditUserProfile from "../screens/EditUserProfile"
 import Reminder from "../screens/Reminder"
 import Maps from "../screens/Maps"
 import FoodSuggestion from "../screens/FoodSuggestion"
+import AddNewRecord from "../screens/AddNewRecord"
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import AddReminder from "../screens/AddReminder"
 import Icon from 'react-native-vector-icons/FontAwesome'
@@ -95,7 +96,8 @@ const App = StackNavigator(
 	  UserDetails : {screen: UserDetails},
 	  BloodSugarLevel : {screen: BloodSugarLevel},
 	  EditUserProfile : {screen: EditUserProfile},
-	  AddReminder : {screen: AddReminder}
+	  AddReminder : {screen: AddReminder},
+	  AddNewRecord : {screen: AddNewRecord}
 	},
   {
     headerMode: 'screen'
