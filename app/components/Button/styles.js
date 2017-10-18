@@ -32,9 +32,9 @@ export default StyleSheet.create({
   },
 
 	roundedButtonText: {
-		fontSize: 20,
+		fontSize: 15,
     fontWeight: 'bold',
-    lineHeight: 14,
+    lineHeight: 20,
     backgroundColor: 'transparent',
     color: Colors.white,
 	},

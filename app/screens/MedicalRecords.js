@@ -8,7 +8,7 @@ export default class MedicalRecords extends Component{
 	render(){
     const {navigate} = this.props.navigation;
     return( 
-    	<View>
+    	<View style = {styles.container}>
     	<Text>2017</Text>
     	<View style={styles.addIcon}>
 		  			<RoundedButton
@@ -27,6 +27,11 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		
+	},
+
+	container:
+	{
+		padding : 30
 	}
 }
 )
