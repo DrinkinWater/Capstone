@@ -1,7 +1,6 @@
 import fetchApi from '../api'
-import NavigatorService from '../navigation/service';
 
-const setCurrentUser = user => ({
+export const setCurrentUser = user => ({
   type: 'SET_CURRENT_USER',
   user
 })

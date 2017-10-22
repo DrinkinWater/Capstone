@@ -52,9 +52,9 @@ const fetchApi = async (endpoint, method = 'get', body, headers = {}) => {
 
   const status = response.status;
 
-  if (status !== 200) {
+  if (!status.toString().match(/^2/)) {
     if (endpoint !== '/auth/validate_token') {
-      let errors = JSON.parse(response._bodyInit).errors.join(' ')
+      let errors = JSON.parse(response._bodyInit).errors
 
       alert(`${errors} (Error code: ${status})`)
     }
@@ -63,8 +63,8 @@ const fetchApi = async (endpoint, method = 'get', body, headers = {}) => {
     }
 
     return
-    // new Error(errors)
   }
+
   await persistToken(response)
   return await response.json()
 }
