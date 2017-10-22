@@ -7,13 +7,28 @@ import UserProfile from '../screens/UserProfile'
 import MedicalRecords from "../screens/MedicalRecords"
 import UserDetails from "../screens/UserDetails"
 import BloodSugarLevel from "../screens/BloodSugarLevel"
+import SOS from "../screens/SOS"
+import AddBloodSugarRecord from "../screens/AddBloodSugarRecord"
+import EditUserProfile from "../screens/EditUserProfile"
+import Reminder from "../screens/Reminder"
 import Maps from "../screens/Maps"
+import FoodSuggestion from "../screens/FoodSuggestion"
+import AddNewRecord from "../screens/AddNewRecord"
 import { TabNavigator, StackNavigator } from 'react-navigation'
+import AddReminder from "../screens/AddReminder"
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Colors from '../constants/Colors'
 
 const Home = TabNavigator(
 	{
+		Reminder: {
+    	screen: Reminder,
+    	navigationOptions: {
+    		title: 'Reminder',
+    		tabBarIcon: ({ tintColor }) => <Icon name="calendar" size={26} color={tintColor} />
+    	}
+		},
+
 		Maps: {
 			screen: Maps,
 			navigationOptions: {
@@ -21,13 +36,23 @@ const Home = TabNavigator(
 				tabBarIcon: ({ tintColor }) => <Icon name="map" size={26} color={tintColor} />
 			}
 		},
-		// Maps: {
-		// 	screen: SOS,
-		// 	navigationOptions: {
-		// 		title: 'SOS',
-		// 		tabBarIcon: ({ tintColor }) => <Icon name="ambulance" size={15} color={tintColor} />
-		// 	}
-		// },
+
+		SOS: {
+			screen: SOS,
+			navigationOptions: {
+				title: 'SOS',
+				tabBarIcon: ({ tintColor}) => <Icon name="ambulance" size={26} color={tintColor}/>
+			}
+		},
+
+		FoodSuggestion : {
+			screen: FoodSuggestion,
+			navigationOptions: {
+				title: 'FoodSuggestion',
+				tabBarIcon: ({ tintColor }) => <Icon name="cutlery" size={26} color={tintColor} />
+			}
+		},
+
 		UserProfile : {
 			screen: UserProfile,
 			navigationOptions: {
@@ -35,6 +60,8 @@ const Home = TabNavigator(
 				tabBarIcon: ({ tintColor }) => <Icon name="user" size={26} color={tintColor} />
 			}
 		},
+
+		
 	},
 	{
 		tabBarPosition: 'bottom',
@@ -72,8 +99,12 @@ const App = StackNavigator(
 	  MedicalRecords : {screen: MedicalRecords},
 	  ForgotPassword : {screen: ForgotPassword},
 	  SignUp : {screen: SignUp},
+	  AddBloodSugarRecord : {screen: AddBloodSugarRecord},
 	  UserDetails : {screen: UserDetails},
-	  BloodSugarLevel : {screen: BloodSugarLevel}
+	  BloodSugarLevel : {screen: BloodSugarLevel},
+	  EditUserProfile : {screen: EditUserProfile},
+	  AddReminder : {screen: AddReminder},
+	  AddNewRecord : {screen: AddNewRecord}
 	},
   {
     headerMode: 'screen'

@@ -8,7 +8,12 @@ const Colors = {
   lightGreen: 'rgb(103, 213, 181)',
   whiteSmoke: 'rgb(245, 245, 245)',
   lightGray: 'rgb(215, 216, 218)',
-  transparent: 'rgba(0, 0, 0, 0)'
+  transparent: 'rgba(0, 0, 0, 0)',
+  chartreuse: 'rgb(127,255,0)',
+  red: 'rgb(255,0,0)',
+  turqoise: 'rgb(61,222,188)'
+
+
 }
 
 export default Colors

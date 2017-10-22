@@ -20,7 +20,17 @@ class LogIn extends Component{
 
   handleLogIn() {
     const { email, password } = this.state;
-    this.props.login({ email, password });
+    this.props.login({ email, password })
+    this.setState({
+      email: '',
+      password: ''
+    })
+  }
+
+  componentDidUpdate() {
+    if (this.props.currentUser) {
+      this.props.navigation.navigate('UserProfile')
+    }
   }
 
   render(){
@@ -39,7 +49,7 @@ class LogIn extends Component{
           onChangeText={password => this.setState({ password })} />
 
         <Button
-          title="Log In"
+          text="Log In"
           onPress={this.handleLogIn} />
 
         <TouchableOpacity onPress={() => navigate("SignUp")}><Text>I am new user</Text></TouchableOpacity>
@@ -63,10 +73,14 @@ const styles = StyleSheet.create({
   }
 })
 
+const mapStateToProps = state => ({
+  currentUser: state.auth.currentUser
+})
+
 const mapDispatchToProps = disptach => ({
   login: params => {
     disptach(logInUser(params))
   }
 })
 
-export default connect(null, mapDispatchToProps)(LogIn)
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn)

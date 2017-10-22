@@ -5,11 +5,12 @@ import { WhitePanel } from '../components/Panel'
 import { ProfileInfo } from '../components/List'
 import { RoundedButton } from '../components/Button'
 
-export default class UserDetails extends Component {
+export default class EditUserDetails extends Component {
 	static navigationOptions = {
-    header: null
+  	title: 'Edit Profile'
+  	
   }
-	render() {
+  render() {
 		const { navigate } = this.props.navigation;
 
 		return (
@@ -20,7 +21,7 @@ export default class UserDetails extends Component {
 					</View>
 					<View style={styles.topDetails}>
 						<Text style={styles.title}>Joseph Lim</Text>
-						<Text style={styles.subTitle}>45 years old</Text>
+						<Text style={styles.subTitle}>70 years old</Text>
 						<Text>011212131</Text>
 					</View>
 				</View>
@@ -37,7 +38,7 @@ export default class UserDetails extends Component {
 							content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut lectus porttitor, porta metus vel, hendrerit enim." />
 					</WhitePanel>
 					<View style={styles.addIcon}>
-						<RoundedButton onPress={()=>navigate("EditUserProfile")} title="Edit Profile" />
+						<RoundedButton onPress={()=>navigate("UserDetails")} title="Save" />
           </View>         
 				</View>
 			</View>
@@ -77,6 +78,7 @@ const styles = StyleSheet.create({
 	},
 	whitePanel: {
 		padding: 15,
+
 	},
 	title: {
 		fontSize: 20,
