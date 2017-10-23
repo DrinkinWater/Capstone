@@ -13,6 +13,12 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center'
   },
+
+  icon: {
+
+  flex: 1
+  },
+
   listText: {
     fontSize: 18,
     fontFamily: Platform.OS === 'android' ? 'sans-serif-light' : undefined
@@ -30,6 +36,10 @@ const styles = StyleSheet.create({
   middleText: {
     flex: 3,
     marginLeft: 20
+  },
+  middleText1: {
+    flex: 5,
+    marginLeft: 30
   },
   smallListText: {
     fontSize: 14

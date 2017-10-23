@@ -12,6 +12,7 @@ const Colors = {
   chartreuse: 'rgb(127,255,0)',
   red: 'rgb(255,0,0)',
   turqoise: 'rgb(61,222,188)'
+  
 
 
 }

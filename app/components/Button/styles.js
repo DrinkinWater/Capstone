@@ -29,7 +29,7 @@ export default StyleSheet.create({
     backgroundColor: Colors.turqoise
 
 
-  },
+   },
 
 	roundedButtonText: {
 		fontSize: 15,
@@ -45,6 +45,19 @@ export default StyleSheet.create({
     lineHeight: 30,
     backgroundColor: 'transparent',
     color: Colors.white,
+    
     },
+
+    AddButton: {
+
+       
+        alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 100,
+    width: 42,
+    height: 42,
+    backgroundColor: Colors.lightGreen,
+
+    }
 
 })
