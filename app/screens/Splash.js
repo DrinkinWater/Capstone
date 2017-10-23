@@ -1,19 +1,11 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, ActivityIndicator, AsyncStorage } from 'react-native'
 import { connect } from 'react-redux'
-import fetchApi from '../api'
+import { validateUser } from '../actions/auth'
 
-export default class Splash extends Component {
-  async componentWillMount() {
-    const { navigate } = this.props.navigation
-
-    let response = await fetchApi('/auth/validate_token', 'get')
-
-    if (response) {
-      navigate('UserProfile')
-    } else {
-      navigate('LogIn')
-    }
+class Splash extends Component {
+  componentWillMount() {
+    this.props.validateUser()
   }
 
   render(){
@@ -40,10 +32,10 @@ const styles = StyleSheet.create({
   }
 })
 
-// const mapDispatchToProps = disptach => ({
-//   checkLogedIn: () => {
-//     disptach(checkUserLogedIn())
-//   }
-// })
-//
-// export default connect(null, mapDispatchToProps)(Splash)
+const mapDispatchToProps = dispatch => ({
+  validateUser: () => {
+    dispatch(validateUser())
+  }
+})
+
+export default connect(null, mapDispatchToProps)(Splash)

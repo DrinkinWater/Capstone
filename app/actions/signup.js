@@ -1,7 +1,8 @@
 import fetchApi from '../api'
 import { setCurrentUser } from './auth'
+import { NavigationActions } from 'react-navigation'
 
-export const signUpUser = ({ name, email, ic, password, passwordConfirmation }) => disptach => {
+export const signUpUser = ({ name, email, ic, password, passwordConfirmation }) => dispatch => {
   let params = {
     name,
     email,
@@ -12,7 +13,8 @@ export const signUpUser = ({ name, email, ic, password, passwordConfirmation }) 
   fetchApi('/auth', 'post', params)
     .then(response => {
       if (response) {
-        disptach(setCurrentUser(response.data))
+        dispatch(setCurrentUser(response.data))
+        dispatch(NavigationActions.navigate({ routeName: 'UserProfile' }))
       }
     })
 }

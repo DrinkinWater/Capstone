@@ -1,4 +1,5 @@
 import fetchApi from '../api'
+import { NavigationActions } from 'react-navigation'
 
 export const setCurrentUser = user => ({
   type: 'SET_CURRENT_USER',
@@ -14,20 +15,41 @@ const loginLoading = isLoading => ({
   isLoading
 })
 
-export const logInUser = ({ email, password }) => disptach => {
-  disptach(loginLoading(true));
+const resetNavigate = routeName => (
+  NavigationActions.reset({
+    index: 0,
+    actions: [
+      NavigationActions.navigate({ routeName })
+    ]
+  })
+)
+
+export const logInUser = ({ email, password }) => dispatch => {
+  dispatch(loginLoading(true));
 
   fetchApi('/auth/sign_in', 'post', { email, password })
     .then(response => {
-      disptach(loginLoading(false))
+      dispatch(loginLoading(false))
       if (response)
-        disptach(setCurrentUser(response.data))
+        dispatch(setCurrentUser(response.data))
     });
 }
 
-export const signOutUser = () => disptach => {
+export const signOutUser = () => dispatch => {
   fetchApi('/auth/sign_out', 'delete')
     .then(() => {
-      disptach(removeCurrentUser())
+      dispatch(removeCurrentUser())
+    });
+}
+
+export const validateUser = () => dispatch => {
+  fetchApi('/auth/validate_token', 'get')
+    .then(response => {
+      if (response) {
+        dispatch(setCurrentUser(response.data))
+        dispatch(resetNavigate('Home'));
+      } else {
+        dispatch(resetNavigate('LogIn'));
+      }
     });
 }

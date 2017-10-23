@@ -77,9 +77,9 @@ const mapStateToProps = state => ({
   currentUser: state.auth.currentUser
 })
 
-const mapDispatchToProps = disptach => ({
+const mapDispatchToProps = dispatch => ({
   login: params => {
-    disptach(logInUser(params))
+    dispatch(logInUser(params))
   }
 })
 

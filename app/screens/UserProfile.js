@@ -13,15 +13,17 @@ class UserProfile extends Component{
     header: null
   };
 	render(){
-    const {navigate} = this.props.navigation;
-    return(
+    const { navigate } = this.props.navigation;
+		const { user } = this.props;
+
+    return (
     	<View style={styles.profile}>
 				<ScrollView>
 					<View style={styles.topDetails}>
 						<Avatar icon="person" size={80} iconSize={60} />
 
-						<Text style={styles.title}>Joseph Lim</Text>
-						<Text style={styles.subTitle}>45 years old</Text>
+						<Text style={styles.title}>{user.name}</Text>
+						<Text style={styles.subTitle}>{user.email}</Text>
 
 						<RoundedButton
 							onPress={()=>navigate("UserDetails")}
@@ -75,10 +77,15 @@ const styles = StyleSheet.create({
 		fontFamily: Platform.OS === 'android' ? 'sans-serif-light' : undefined
 	},
 })
-const mapDispatchToProps = disptach => ({
+
+const mapStateToProps = state => ({
+	user: state.auth.currentUser
+})
+
+const mapDispatchToProps = dispatch => ({
 	signOut: () => {
-		disptach(signOutUser())
+		dispatch(signOutUser())
 	}
 })
 
-export default connect(null, mapDispatchToProps)(UserProfile)
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfile)

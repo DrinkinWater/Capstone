@@ -61,7 +61,7 @@ const Home = TabNavigator(
 			}
 		},
 
-		
+
 	},
 	{
 		tabBarPosition: 'bottom',
@@ -110,4 +110,5 @@ const App = StackNavigator(
     headerMode: 'screen'
   }
 )
+
 export default App
