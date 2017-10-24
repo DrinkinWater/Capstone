@@ -1,17 +1,44 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, TouchableOpacity, Button, StyleSheet } from 'react-native'
+import { View, Text, Button, StyleSheet, ScrollView } from 'react-native'
+import { connect } from 'react-redux'
 import { Avatar } from 'react-native-material-ui'
 import { WhitePanel } from '../components/Panel'
-import { ProfileInfo } from '../components/List'
+import { FormInput } from '../components/Input'
 import { RoundedButton } from '../components/Button'
 
-export default class EditUserDetails extends Component {
+class EditUserProfile extends Component {
 	static navigationOptions = {
   	title: 'Edit Profile'
-  	
   }
+
+	constructor(){
+		super()
+		this.state = {
+			ic: '',
+			gender: '',
+			height: '',
+			weight: '',
+			blood_type: '',
+			active_problem: '',
+			allergies: '',
+			current_medication: ''
+		}
+	}
+
   render() {
 		const { navigate } = this.props.navigation;
+		const { user } = this.props;
+
+		const details = {
+			'NRIC': 'ic',
+			'Gender': 'gender',
+			'Height': 'height',
+			'Weight': 'weight',
+			'Blood Type': 'blood_type',
+			'Active Problem': 'active_problem',
+			'Allergies': 'allergies',
+			'Current Medicine': 'current_medication'
+		}
 
 		return (
 			<View style={styles.profile}>
@@ -27,19 +54,19 @@ export default class EditUserDetails extends Component {
 				</View>
 				<View style={styles.bottom}>
 					<WhitePanel style={styles.whitePanel}>
-						<ProfileInfo
-							title="Active Problem"
-							content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut lectus porttitor, porta metus vel, hendrerit enim." />
-						<ProfileInfo
-							title="Allergies"
-							content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut lectus porttitor, porta metus vel, hendrerit enim." />
-						<ProfileInfo
-							title="Current Medicine"
-							content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut lectus porttitor, porta metus vel, hendrerit enim." />
+						<ScrollView>
+							{Object.keys(details).map((detail, i) => (
+								<FormInput
+									label={detail}
+									onChangeText={text => this.setState({ [details[detail]]: text })}
+									value={user[details[detail]]}
+									key={i} />
+							))}
+						</ScrollView>
 					</WhitePanel>
 					<View style={styles.addIcon}>
-						<RoundedButton onPress={()=>navigate("UserDetails")} title="Save" />
-          </View>         
+						<RoundedButton onPress={() => alert(this.state.ic)} title="Save" />
+          </View>
 				</View>
 			</View>
 		)
@@ -50,35 +77,32 @@ const styles = StyleSheet.create({
   	padding: 20,
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		
+
 	},
 	profile: {
 		justifyContent: 'space-between',
 		alignItems: 'stretch',
-		padding: 15
+		padding: 15,
+		flex: 1
 	},
 	top: {
 		paddingLeft: 10,
 		flexDirection: 'row',
 		justifyContent: 'flex-start',
 		alignItems: 'stretch',
-		// flex: 2
 	},
 	avatar: {
 		marginRight: 20,
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
-	topDetails: {
-		// flex: 5
-	},
 	bottom: {
-		// flex: 1
+		flex: 8,
 		marginTop: 15
 	},
 	whitePanel: {
 		padding: 15,
-
+		flex: 8
 	},
 	title: {
 		fontSize: 20,
@@ -86,3 +110,9 @@ const styles = StyleSheet.create({
 		fontWeight: '700'
 	}
 })
+
+const mapStateToProps = state => ({
+	user: state.auth.currentUser
+})
+
+export default connect(mapStateToProps)(EditUserProfile)

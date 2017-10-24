@@ -4,7 +4,8 @@ import styles from './styles'
 
 const MenuList = ({ onPress, children }) => (
   <TouchableNativeFeedback
-    onPress={onPress}>
+    onPress={onPress}
+    delayPressIn={0} >
     <View style={styles.list}>
       <Text style={styles.listText}>{children}</Text>
     </View>

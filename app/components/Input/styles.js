@@ -19,6 +19,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingTop: 0,
     paddingBottom: 0
+  },
+  inputLabel: {
+    fontSize: 16,
+		fontWeight: '700'
+  },
+  form: {
+    marginBottom: 10
+  },
+  formInput: {
+    borderBottomColor: Colors.lightGray,
+    borderBottomWidth: 1
   }
 })
 

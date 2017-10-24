@@ -74,15 +74,11 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'flex-start',
 		alignItems: 'stretch',
-		// flex: 1
 	},
 	avatar: {
 		marginRight: 20,
 		justifyContent: 'center',
 		alignItems: 'center',
-	},
-	topDetails: {
-		// flex: 5
 	},
 	bottom: {
 		flex: 8,

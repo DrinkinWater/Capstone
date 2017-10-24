@@ -4,7 +4,9 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 import styles from './styles'
 
 const LocationList = ({ onPress, location }) => (
-  <TouchableNativeFeedback onPress={onPress}>
+  <TouchableNativeFeedback
+    onPress={onPress}
+    delayPressIn={0}>
     <View style={styles.list}>
       <Icon name="hospital-o" size={25} />
       <View style={styles.middleText}>

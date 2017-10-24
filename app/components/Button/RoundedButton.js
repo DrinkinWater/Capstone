@@ -8,7 +8,8 @@ const RoundedButton = ({ onPress, title, style }) =>
   (
     <TouchableHighlight
       onPress={onPress}
-      underlayColor={ 'transparent' } >
+      underlayColor={ 'transparent' }
+      delayPressIn={0} >
       <View style={[styles.roundedButton, style]}>
               <Text style={styles.roundedButtonText}>
                 {title}
