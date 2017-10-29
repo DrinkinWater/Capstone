@@ -8,6 +8,8 @@ import ViewContainer from './ViewContainer'
 import { COLOR, ThemeProvider } from 'react-native-material-ui';
 import configureStore from '../store'
 import { API_ROOT } from '../config/api'
+import { setCustomText } from 'react-native-global-props';
+import Colors from '../constants/Colors'
 
 const store = configureStore()
 
@@ -25,6 +27,16 @@ const uiTheme = {
     },
   },
 };
+
+// Setting default styles for all Text components.
+const customTextProps = {
+  style: {
+    fontFamily: 'avenirBook',
+    color: Colors.mainBlack
+  }
+};
+
+setCustomText(customTextProps);
 
 class App extends Component {
   componentDidMount() {

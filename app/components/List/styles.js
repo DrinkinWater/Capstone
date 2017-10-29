@@ -13,13 +13,14 @@ const styles = StyleSheet.create({
   },
 
   icon: {
-
-  flex: 1
+    flex: 1
   },
 
   listText: {
     fontSize: 18,
-    color: Colors.mainBlack
+    color: Colors.mainBlack,
+    fontFamily: 'avenirRoman',
+    fontWeight: '500'
   },
   profileInfo: {
     marginBottom: 30
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
 		fontWeight: '700'
   },
   profileContent: {
-    fontFamily: Platform.OS === 'android' ? 'sans-serif-light' : undefined
+    fontFamily: '100'
   },
   middleText: {
     flex: 3,
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
   },
   extraSmallListText: {
     fontSize: 12,
-    fontFamily: Platform.OS === 'android' ? 'sans-serif-light' : undefined
+    fontFamily: '100'
   }
 })
 

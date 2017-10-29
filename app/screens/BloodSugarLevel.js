@@ -1,4 +1,4 @@
-import React,{Component} from 'react'
+import React, { Component } from 'react'
 import { View, Text, TextInput, TouchableOpacity, Button, StyleSheet,ScrollView } from 'react-native'
 import { SOSButton, AddButton } from '../components/Button'
 import Colors from '../constants/Colors'
@@ -23,8 +23,8 @@ export default class BloodSugarLevel extends Component {
 		};
 	}
   render() {
-  	const {navigate} = this.props.navigation;
-  	return(
+  	const { navigate } = this.props.navigation;
+  	return (
   		<ScrollView>
 		  	<View style={styles.container}>
 		  		<Text style={styles.title}>Averages</Text>

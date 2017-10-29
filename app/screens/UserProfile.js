@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
 	subTitle: {
 		marginBottom: 20,
 		fontSize: 16,
-		fontFamily: Platform.OS === 'android' ? 'sans-serif-light' : undefined,
+		fontWeight: '100',
 		color: Colors.grey
 	},
 })

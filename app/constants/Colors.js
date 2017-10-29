@@ -14,7 +14,6 @@ const Colors = {
   turqoise: 'rgb(61,222,188)',
   darkGrey: 'rgb(60, 60, 60)',
   mainBlack: 'rgb(1, 22, 39)',
-
 }
 
 export default Colors
