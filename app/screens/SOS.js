@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, Button, StyleSheet, ScrollView
 import { Avatar } from 'react-native-material-ui'
 import { WhitePanel } from '../components/Panel'
 import { ProfileInfo } from '../components/List'
-import {SOSButton} from '../components/Button'
+import { SOSButton, AddButton } from '../components/Button'
 
 
 export default class SOS extends Component {
@@ -19,11 +19,10 @@ export default class SOS extends Component {
       <ScrollView>
 				<View style={styles.addIcon}>
 					<SOSButton
-						onLongPress={() => alert('Request Sent')}
+						onLongPress={() => alert('Request Accepted, Hospital A, ETA 5 mins')}
 						title="HELP ME!" />
 				</View>
 				<View style={styles.container}>
-				
 					<Text style={styles.title}>Name:</Text>
 					<Text>Joseph Lim</Text>
 					<Text style={styles.title}>Age:</Text>

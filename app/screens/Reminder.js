@@ -5,7 +5,7 @@ import { Button } from 'react-native-material-ui'
 import { ButtonTab } from '../components/Tab'
 import { ReminderList } from '../components/List'
 import { WhitePanel } from '../components/Panel'
-import { RoundedButton } from '../components/Button'
+import { RoundedButton,AddButton } from '../components/Button'
 
 export default class Reminder extends Component {
 	static navigationOptions = {
@@ -79,9 +79,9 @@ export default class Reminder extends Component {
 					</WhitePanel>
 
 					<View style={styles.addIcon}>
-		  			<RoundedButton
+		  			<AddButton
 							onPress={()=>navigate("AddReminder")}
-							title="New Reminder" />
+							 />
 		  		</View>
   
 				</View>

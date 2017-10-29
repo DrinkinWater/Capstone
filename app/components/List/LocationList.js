@@ -20,3 +20,4 @@ const LocationList = ({ onPress, location }) => (
 )
 
 export default LocationList
+

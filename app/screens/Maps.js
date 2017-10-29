@@ -19,19 +19,19 @@ export default class Maps extends Component {
 			activeTab: "Hospital",
 			results: [
 				{
-					name: 'Hospital Stephie',
+					name: 'Hospital A',
 					distance: '1 cm',
 					eta: 'ETA 1 min',
 					type: 'Hospital'
 				},
 				{
-					name: 'Hospital Jeff',
+					name: 'Hospital B',
 					distance: '5 km',
 					eta: 'ETA 10 mins',
 					type: 'Hospital'
 				},
 				{
-					name: 'Clinic Joseph',
+					name: 'Clinic C',
 					distance: '3 km',
 					eta: 'ETA 4 mins',
 					type: 'Clinic'

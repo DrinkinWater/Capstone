@@ -11,6 +11,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center'
   },
+
+  icon: {
+
+  flex: 1
+  },
+
   listText: {
     fontSize: 18,
     color: Colors.mainBlack
@@ -28,6 +34,10 @@ const styles = StyleSheet.create({
   middleText: {
     flex: 3,
     marginLeft: 20
+  },
+  middleText1: {
+    flex: 5,
+    marginLeft: 30
   },
   smallListText: {
     fontSize: 14

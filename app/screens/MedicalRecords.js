@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import {View,Text,TextInput,TouchableOpacity,Button, StyleSheet} from 'react-native'
-import { RoundedButton } from '../components/Button'
+import { SOSButton, AddButton } from '../components/Button'
 export default class MedicalRecords extends Component{
 	static navigationOptions = {
     title: 'MedicalRecords'
@@ -8,12 +8,12 @@ export default class MedicalRecords extends Component{
 	render(){
     const {navigate} = this.props.navigation;
     return( 
-    	<View>
+    	<View style = {styles.container}>
     	<Text>2017</Text>
     	<View style={styles.addIcon}>
-		  			<RoundedButton
+		  			<AddButton
 							onPress={()=>navigate("AddNewRecord")}
-							title="New Report" />
+							 />
 		  		</View>
 
     	</View>
@@ -27,6 +27,11 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		
+	},
+
+	container:
+	{
+		padding : 30
 	}
 }
 )
