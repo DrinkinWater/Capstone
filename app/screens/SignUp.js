@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, TextInput, TouchableOpacity, Button } from 'react-native'
 import { connect } from 'react-redux'
-import { signUpUser } from '../actions/signup'
+import { signUpUser } from '../actions/user'
 
 class SignUp extends Component {
   constructor() {

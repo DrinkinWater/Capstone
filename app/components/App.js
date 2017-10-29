@@ -55,7 +55,7 @@ class App extends Component {
                 state: this.props.nav,
               })
             } />
-        </ViewContainer>
+          </ViewContainer>
       </ThemeProvider>
     )
   }

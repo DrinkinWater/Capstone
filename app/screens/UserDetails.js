@@ -17,6 +17,7 @@ class UserDetails extends Component {
 		const details = {
 			'NRIC': 'ic',
 			'Gender': 'gender',
+			'Birthday': 'birthday',
 			'Height': 'height',
 			'Weight': 'weight',
 			'Blood Type': 'blood_type',

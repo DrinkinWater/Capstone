@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, Text, TextInput, TouchableOpacity, TouchableNativeFeedback, ScrollView } from 'react-native'
-import { Avatar } from 'react-native-material-ui';
 import { RoundedButton } from '../components/Button'
 import { MenuList } from '../components/List'
 import { WhitePanel } from '../components/Panel'

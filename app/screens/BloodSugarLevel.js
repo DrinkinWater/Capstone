@@ -1,6 +1,5 @@
 import React,{Component} from 'react'
 import { View, Text, TextInput, TouchableOpacity, Button, StyleSheet,ScrollView } from 'react-native'
-import { Avatar } from 'react-native-material-ui'
 import { RoundedButton } from '../components/Button'
 import Colors from '../constants/Colors'
 import  Icon from 'react-native-vector-icons/Ionicons' ;
@@ -65,7 +64,7 @@ const styles = StyleSheet.create({
   	padding: 20,
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		
+
 	},
 	container: {
 		padding: 20

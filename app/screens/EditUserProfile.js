@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { View, Text, Button, StyleSheet, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { Avatar } from 'react-native-material-ui'
 import { WhitePanel } from '../components/Panel'
 import { FormInput } from '../components/Input'
 import { RoundedButton } from '../components/Button'
+import { updateUser } from '../actions/user'
 
 class EditUserProfile extends Component {
 	static navigationOptions = {
@@ -13,16 +14,13 @@ class EditUserProfile extends Component {
 
 	constructor(){
 		super()
-		this.state = {
-			ic: '',
-			gender: '',
-			height: '',
-			weight: '',
-			blood_type: '',
-			active_problem: '',
-			allergies: '',
-			current_medication: ''
-		}
+
+		this.state = {}
+		this.submitForm = this.submitForm.bind(this)
+	}
+
+	submitForm() {
+		this.props.updateUser(this.state)
 	}
 
   render() {
@@ -30,14 +28,37 @@ class EditUserProfile extends Component {
 		const { user } = this.props;
 
 		const details = {
-			'NRIC': 'ic',
-			'Gender': 'gender',
-			'Height': 'height',
-			'Weight': 'weight',
-			'Blood Type': 'blood_type',
-			'Active Problem': 'active_problem',
-			'Allergies': 'allergies',
-			'Current Medicine': 'current_medication'
+			'NRIC': { name: 'ic' },
+			'Gender': {
+				name: 'gender',
+				component: FormInput.Picker,
+				extra: {
+					item: {
+						'Male': 'male',
+						'Female': 'female'
+					},
+					value: this.state.gender || user.gender
+				}
+			},
+			'Birthday': { name: 'birthday' },
+			'Height': { name: 'height' },
+			'Weight': { name: 'weight' },
+			'Blood Type': {
+				name: 'blood_type',
+				component: FormInput.Picker,
+				extra: {
+					item: {
+						'A': 'A',
+						'B': 'B',
+						'AB': 'AB',
+						'O': 'O'
+					},
+					value: this.state.blood_type || user.blood_type
+				}
+			},
+			'Active Problem': { name: 'active_problem' },
+			'Allergies': { name: 'allergies' },
+			'Current Medicine': { name: 'current_medication' }
 		}
 
 		return (
@@ -47,25 +68,31 @@ class EditUserProfile extends Component {
 						<Avatar icon="person" size={60} />
 					</View>
 					<View style={styles.topDetails}>
-						<Text style={styles.title}>Joseph Lim</Text>
+						<Text style={styles.title}>{user.name}</Text>
 						<Text style={styles.subTitle}>70 years old</Text>
-						<Text>011212131</Text>
+						<Text>{user.ic}</Text>
 					</View>
 				</View>
 				<View style={styles.bottom}>
 					<WhitePanel style={styles.whitePanel}>
 						<ScrollView>
-							{Object.keys(details).map((detail, i) => (
-								<FormInput
-									label={detail}
-									onChangeText={text => this.setState({ [details[detail]]: text })}
-									value={user[details[detail]]}
-									key={i} />
-							))}
+							{Object.keys(details).map((detail, i) => {
+								let obj = details[detail]
+								let Component = obj.component || FormInput
+
+								return (
+									<Component
+										label={detail}
+										onChange={val => this.setState({ [obj.name]: val })}
+										value={user[obj.name]}
+										key={i}
+										{...obj.extra} />
+								)
+							})}
 						</ScrollView>
 					</WhitePanel>
 					<View style={styles.addIcon}>
-						<RoundedButton onPress={() => alert(this.state.ic)} title="Save" />
+						<RoundedButton onPress={() => this.submitForm()} title="Save" />
           </View>
 				</View>
 			</View>
@@ -115,4 +142,10 @@ const mapStateToProps = state => ({
 	user: state.auth.currentUser
 })
 
-export default connect(mapStateToProps)(EditUserProfile)
+const mapDispatchToProps = dispatch => ({
+	updateUser: params => {
+		dispatch(updateUser(params))
+	}
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditUserProfile)

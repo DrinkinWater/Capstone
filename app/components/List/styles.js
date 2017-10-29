@@ -7,15 +7,13 @@ const styles = StyleSheet.create({
     paddingBottom: 17,
     paddingLeft: 15,
     paddingRight: 15,
-    borderTopColor: Colors.lightGray,
-    borderTopWidth: StyleSheet.hairlineWidth,
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     alignItems: 'center'
   },
   listText: {
     fontSize: 18,
-    fontFamily: Platform.OS === 'android' ? 'sans-serif-light' : undefined
+    color: Colors.mainBlack
   },
   profileInfo: {
     marginBottom: 30

@@ -1,6 +1,5 @@
 import React,{Component} from 'react'
 import { View, Text, TextInput, TouchableOpacity, Button, StyleSheet,ScrollView } from 'react-native'
-import { Avatar } from 'react-native-material-ui'
 import { RoundedButton } from '../components/Button'
 import Colors from '../constants/Colors'
 import  Icon from 'react-native-vector-icons/Ionicons' ;
@@ -31,7 +30,7 @@ export default class AddReminder extends Component {
 		  		<RoundedButton
 								onPress={() => alert('Saved')}
 								title="Save" />
-								
+
 				</View>
 			</View>
   		)

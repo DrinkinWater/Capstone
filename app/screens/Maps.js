@@ -6,6 +6,7 @@ import { SearchBar } from '../components/Input'
 import { ButtonTab } from '../components/Tab'
 import { LocationList } from '../components/List'
 import { WhitePanel } from '../components/Panel'
+import RNGooglePlaces from 'react-native-google-places';
 
 export default class Maps extends Component {
 	static navigationOptions = {
@@ -39,6 +40,7 @@ export default class Maps extends Component {
 		};
 
 		this.onTabSelected = this.onTabSelected.bind(this)
+		this.openSearchModal = this.openSearchModal.bind(this)
 	}
 
 	onTabSelected(tab) {
@@ -49,10 +51,23 @@ export default class Maps extends Component {
 		return this.state.results.filter(r => r.type === this.state.activeTab)
 	}
 
+	openSearchModal() {
+    RNGooglePlaces.openAutocompleteModal({
+			type: 'hospital',
+			country: 'MY',
+		})
+    .then((place) => {
+			console.log(place);
+			// place represents user's selection from the
+			// suggestions and it is a simplified Google Place object.
+    })
+    .catch(error => console.log(error.message));  // error is a Javascript Error object
+  }
+
 	render() {
-		return(
+		return (
 			<View style={styles.container}>
-				<SearchBar onChangeText={t => alert(t)} placeholder="What are you looking for?" />
+				<SearchBar onClick={() => this.openSearchModal()} placeholder="What are you looking for?" />
 				<View style={styles.buttons}>
 					<ButtonTab
 						onPress={() => this.onTabSelected('Hospital')}

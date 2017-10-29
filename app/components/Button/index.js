@@ -1,5 +1,5 @@
 import RoundedButton from './RoundedButton'
 import SOSButton from './SOSButton'
+import PlainButton from './PlainButton'
 
-export { RoundedButton }
-export { SOSButton}
+export { RoundedButton, SOSButton, PlainButton }
