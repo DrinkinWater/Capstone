@@ -11,11 +11,9 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center'
   },
-
   icon: {
     flex: 1
   },
-
   listText: {
     fontSize: 18,
     color: Colors.mainBlack,

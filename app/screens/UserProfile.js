@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { signOutUser } from '../actions/auth'
 import { PlainButton } from '../components/Button'
 import { MenuList } from '../components/List'
-import { WhitePanel } from '../components/Panel'
+import { WhitePanel, GradientPanel } from '../components/Panel'
 import Avatar from '../components/Avatar'
 import Colors from '../constants/Colors'
 
@@ -19,6 +19,7 @@ class UserProfile extends Component{
     return (
     	<View style={styles.profile}>
 				<View style={styles.topDetails}>
+					<GradientPanel style={styles.linearGradient} />
 					<WhitePanel style={styles.panel}>
 						<Avatar />
 
@@ -31,7 +32,6 @@ class UserProfile extends Component{
 
 					</WhitePanel>
 				</View>
-
 				<View style={styles.bottomDetails}>
 					<MenuList onPress={() => navigate("MedicalRecords")}>
 						Medical Records
@@ -49,25 +49,28 @@ class UserProfile extends Component{
 }
 
 const styles = StyleSheet.create({
+	linearGradient: {
+		margin: -15,
+		marginBottom: 0,
+		paddingTop: 150,
+	},
 	profile: {
-		// justifyContent: 'space-between',
 		alignItems: 'stretch',
 		padding: 15,
 		flex: 1
 	},
 	topDetails: {
-		justifyContent: 'space-between',
 		alignItems: 'stretch',
 		flex: 1,
 	},
 	panel: {
 		paddingLeft: 30,
 		paddingTop: 15,
-		padding: 20
+		padding: 20,
+		marginTop: -135
 	},
 	bottomDetails: {
 		flex: 1,
-		// justifyContent: 'space-around',
 		padding: 15
 	},
 	title: {

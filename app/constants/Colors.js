@@ -13,7 +13,11 @@ const Colors = {
   red: 'rgb(255,0,0)',
   turqoise: 'rgb(61,222,188)',
   darkGrey: 'rgb(60, 60, 60)',
+  // main color
   mainBlack: 'rgb(1, 22, 39)',
+  mainGreen: 'rgb(46, 196, 182)',
+  mainLightGreen: 'rgb(198, 243, 181)'
+
 }
 
 export default Colors
