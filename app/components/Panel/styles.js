@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
 		borderRadius: 4,
 	},
   linearGradient: {
-    flex: 1
+    // flex: 1
   }
 })
 

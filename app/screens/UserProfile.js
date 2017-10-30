@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
 		flex: 1
 	},
 	topDetails: {
-		alignItems: 'stretch',
-		flex: 1,
+		// alignItems: 'stretch',
+		// flex: 1,
 	},
 	panel: {
 		paddingLeft: 30,
@@ -70,7 +70,6 @@ const styles = StyleSheet.create({
 		marginTop: -135
 	},
 	bottomDetails: {
-		flex: 1,
 		padding: 15
 	},
 	title: {

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { Button } from 'react-native-material-ui'
 import { SearchBar } from '../components/Input'
 import { ButtonTab } from '../components/Tab'
 import { LocationList } from '../components/List'
-import { WhitePanel } from '../components/Panel'
+import { WhitePanel, GradientPanel } from '../components/Panel'
 import RNGooglePlaces from 'react-native-google-places';
 
 export default class Maps extends Component {
@@ -53,7 +53,6 @@ export default class Maps extends Component {
 
 	openSearchModal() {
     RNGooglePlaces.openAutocompleteModal({
-			type: 'hospital',
 			country: 'MY',
 		})
     .then((place) => {
@@ -64,10 +63,27 @@ export default class Maps extends Component {
     .catch(error => console.log(error.message));  // error is a Javascript Error object
   }
 
+	componentDidMount() {
+		navigator.geolocation.getCurrentPosition(
+			(position) => {
+				console.log(position)
+        this.setState({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          error: null,
+        });
+      },
+      (error) => this.setState({ error: error.message }),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+    );
+	}
+
 	render() {
 		return (
 			<View style={styles.container}>
-				<SearchBar onClick={() => this.openSearchModal()} placeholder="What are you looking for?" />
+				<GradientPanel style={styles.linearGradient}>
+					<SearchBar onClick={() => this.openSearchModal()} placeholder="What are you looking for?" />
+				</GradientPanel>
 				<View style={styles.buttons}>
 					<ButtonTab
 						onPress={() => this.onTabSelected('Hospital')}
@@ -95,8 +111,15 @@ export default class Maps extends Component {
 		}
 	}
 	const styles = StyleSheet.create({
+		linearGradient: {
+			padding: 25,
+			paddingTop: 35,
+			paddingBottom: 35,
+			margin: -10,
+		},
 		container: {
-			padding: 10
+			padding: 10,
+			flex: 1
 		},
 	  searchbar: {
 			flexDirection: "row",
