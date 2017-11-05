@@ -34,7 +34,7 @@ const tokenForHeader = async () => {
 }
 
 const fetchApi = async (endpoint, method = 'get', body, headers = {}) => {
-  let url = `${API_ROOT}${endpoint}`;
+  let url = `${API_ROOT}/api${endpoint}`;
   let tfh = await tokenForHeader()
 
   let config = {
