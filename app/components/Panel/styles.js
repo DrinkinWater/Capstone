@@ -8,6 +8,9 @@ const styles = StyleSheet.create({
 		backgroundColor: Colors.white,
 		borderRadius: 4,
 	},
+  linearGradient: {
+    // flex: 1
+  }
 })
 
 export default styles

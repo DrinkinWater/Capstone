@@ -7,15 +7,18 @@ const styles = StyleSheet.create({
     paddingBottom: 17,
     paddingLeft: 15,
     paddingRight: 15,
-    borderTopColor: Colors.lightGray,
-    borderTopWidth: StyleSheet.hairlineWidth,
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     alignItems: 'center'
+  },
+  icon: {
+    flex: 1
   },
   listText: {
     fontSize: 18,
-    fontFamily: Platform.OS === 'android' ? 'sans-serif-light' : undefined
+    color: Colors.mainBlack,
+    fontFamily: 'avenirRoman',
+    fontWeight: '500'
   },
   profileInfo: {
     marginBottom: 30
@@ -25,11 +28,15 @@ const styles = StyleSheet.create({
 		fontWeight: '700'
   },
   profileContent: {
-    fontFamily: Platform.OS === 'android' ? 'sans-serif-light' : undefined
+    fontFamily: '100'
   },
   middleText: {
     flex: 3,
     marginLeft: 20
+  },
+  middleText1: {
+    flex: 5,
+    marginLeft: 30
   },
   smallListText: {
     fontSize: 14
@@ -39,7 +46,25 @@ const styles = StyleSheet.create({
   },
   extraSmallListText: {
     fontSize: 12,
-    fontFamily: Platform.OS === 'android' ? 'sans-serif-light' : undefined
+    fontFamily: '100'
+  },
+  cardList: {
+    padding: 10,
+    backgroundColor: Colors.white,
+    borderRadius: 4,
+    margin: 5,
+    alignItems: 'stretch',
+    width: 150,
+    height: 200
+  },
+  cardImage: {
+    backgroundColor: Colors.grey,
+    height: 80,
+    marginBottom: 15,
+    borderRadius: 4
+  },
+  cardTitle: {
+    fontSize: 16
   }
 })
 

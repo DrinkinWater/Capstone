@@ -1,17 +1,19 @@
 import React from 'react'
-import { View, TextInput } from 'react-native'
+import { View, Text, TouchableWithoutFeedback } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import styles from './styles'
 
-const SearchBar = ({ onChangeText, placeholder }) => (
-  <View style={styles.searchbar}>
-    <Icon style={styles.searchIcon} name="search" />
-    <TextInput
-      style={styles.input}
-      placeholder={placeholder}
-      onChangeText={onChangeText}
-      underlineColorAndroid='rgba(0,0,0,0)' />
-  </View>
+const SearchBar = ({ onClick, placeholder }) => (
+  <TouchableWithoutFeedback onPress={onClick}>
+    <View
+      style={styles.searchbar}
+      onClick={onClick}>
+      <Icon style={styles.searchIcon} name="search" />
+      <Text style={styles.input}>
+        {placeholder}
+      </Text>
+    </View>
+  </TouchableWithoutFeedback>
 )
 
 export default SearchBar

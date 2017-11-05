@@ -3,23 +3,21 @@ import { TouchableHighlight, Text, Platform, View } from 'react-native';
 import PropTypes from 'prop-types';
 import Colors from '../../constants/Colors';
 import styles from './styles';
+import Icon from 'react-native-vector-icons/Ionicons'
 
-const RoundedButton = ({ onPress, title, style }) =>
+const AddButton = ({ onPress, title, style }) =>
   (
     <TouchableHighlight
       onPress={onPress}
-      underlayColor={ 'transparent' }
-      delayPressIn={0} >
-      <View style={[styles.roundedButton, style]}>
-              <Text style={styles.roundedButtonText}>
-                {title}
-              </Text>
+      underlayColor={ 'transparent' } >
+      <View style={[styles.AddButton, style]}>
+              <Icon name='ios-add-outline' size= { 25 } color={ Colors.white }/>
       </View>
     </TouchableHighlight>
   );
 
-RoundedButton.propTypes = {
+AddButton.propTypes = {
   onPress: PropTypes.func,
 };
 
-export default RoundedButton;
+export default AddButton;

@@ -25,7 +25,7 @@ const Home = TabNavigator(
     	screen: Reminder,
     	navigationOptions: {
     		title: 'Reminder',
-    		tabBarIcon: ({ tintColor }) => <Icon name="calendar" size={26} color={tintColor} />
+    		tabBarIcon: ({ tintColor }) => <Icon name="calendar" size={20} color={tintColor} />
     	}
 		},
 
@@ -33,7 +33,7 @@ const Home = TabNavigator(
 			screen: Maps,
 			navigationOptions: {
 				title: 'Maps',
-				tabBarIcon: ({ tintColor }) => <Icon name="map" size={26} color={tintColor} />
+				tabBarIcon: ({ tintColor }) => <Icon name="map" size={20} color={tintColor} />
 			}
 		},
 
@@ -41,7 +41,7 @@ const Home = TabNavigator(
 			screen: SOS,
 			navigationOptions: {
 				title: 'SOS',
-				tabBarIcon: ({ tintColor}) => <Icon name="ambulance" size={26} color={tintColor}/>
+				tabBarIcon: ({ tintColor}) => <Icon name="ambulance" size={20} color={tintColor}/>
 			}
 		},
 
@@ -49,7 +49,7 @@ const Home = TabNavigator(
 			screen: FoodSuggestion,
 			navigationOptions: {
 				title: 'FoodSuggestion',
-				tabBarIcon: ({ tintColor }) => <Icon name="cutlery" size={26} color={tintColor} />
+				tabBarIcon: ({ tintColor }) => <Icon name="cutlery" size={20} color={tintColor} />
 			}
 		},
 
@@ -57,7 +57,7 @@ const Home = TabNavigator(
 			screen: UserProfile,
 			navigationOptions: {
 				title: 'Profile',
-				tabBarIcon: ({ tintColor }) => <Icon name="user" size={26} color={tintColor} />
+				tabBarIcon: ({ tintColor }) => <Icon name="user" size={20} color={tintColor} />
 			}
 		},
 
@@ -65,14 +65,14 @@ const Home = TabNavigator(
 	},
 	{
 		tabBarPosition: 'bottom',
-		// initialRouteName: 'UserProfile',
+		initialRouteName: 'Maps',
 		tabBarOptions: {
 			showIcon: true,
 			showLabel: false,
-			activeTintColor: Colors.lightBlue,
+			activeTintColor: Colors.darkGrey,
 			inactiveTintColor: Colors.grey,
 			tabStyle: {
-				padding: 12
+				padding: 14
 			},
 			style: {
 				backgroundColor: Colors.notSoWhite,
@@ -107,7 +107,10 @@ const App = StackNavigator(
 	  AddNewRecord : {screen: AddNewRecord}
 	},
   {
-    headerMode: 'screen'
+    headerMode: 'screen',
+		cardStyle: {
+	    backgroundColor: Colors.whiteSmoke
+	  }
   }
 )
 

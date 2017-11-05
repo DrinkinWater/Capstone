@@ -1,6 +1,8 @@
 apply plugin: "com.android.application"
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 import com.android.build.OutputFile
+
 
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
@@ -133,6 +135,10 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-android-location-services-dialog-box')
+    compile project(':react-native-config')
+    compile project(':react-native-linear-gradient')
+    compile project(':react-native-google-places')
     compile project(':react-native-secure-key-store')
     compile project(':react-native-vector-icons')
     compile fileTree(dir: "libs", include: ["*.jar"])

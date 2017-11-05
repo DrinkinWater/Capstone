@@ -17,6 +17,7 @@ class UserDetails extends Component {
 		const details = {
 			'NRIC': 'ic',
 			'Gender': 'gender',
+			'Birthday': 'birthday',
 			'Height': 'height',
 			'Weight': 'weight',
 			'Blood Type': 'blood_type',
@@ -74,15 +75,11 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'flex-start',
 		alignItems: 'stretch',
-		// flex: 1
 	},
 	avatar: {
 		marginRight: 20,
 		justifyContent: 'center',
 		alignItems: 'center',
-	},
-	topDetails: {
-		// flex: 5
 	},
 	bottom: {
 		flex: 8,

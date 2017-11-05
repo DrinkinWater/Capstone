@@ -1,17 +1,30 @@
-import React,{Component} from 'react'
+import React, { Component } from 'react'
 import { View, Text, TextInput, TouchableOpacity, Button, StyleSheet,ScrollView } from 'react-native'
-import { Avatar } from 'react-native-material-ui'
-import { RoundedButton } from '../components/Button'
+import { SOSButton, AddButton } from '../components/Button'
 import Colors from '../constants/Colors'
+import { BloodSugarList } from '../components/List'
+import { WhitePanel } from '../components/Panel'
 import  Icon from 'react-native-vector-icons/Ionicons' ;
 
 export default class BloodSugarLevel extends Component {
   static navigationOptions = {
     title: 'Your Blood Sugar Level'
   }
+
+  constructor(props){
+		super(props);
+		this.state = {
+			results: [
+				{
+					result: '6.0',
+					time: 'Before Lunch'
+				}
+			]
+		};
+	}
   render() {
-  	const {navigate} = this.props.navigation;
-  	return(
+  	const { navigate } = this.props.navigation;
+  	return (
   		<ScrollView>
 		  	<View style={styles.container}>
 		  		<Text style={styles.title}>Averages</Text>
@@ -50,10 +63,20 @@ export default class BloodSugarLevel extends Component {
 		  		</View>
 
 		  		<View style={styles.addIcon}>
-		  			<RoundedButton
+		  			<AddButton
 								onPress={()=>navigate("AddBloodSugarRecord")}
-								title="Add New Records" />
+								 />
 		  		</View>
+
+		  		<Text style={styles.title}>Results</Text>
+		  		<WhitePanel>
+		  		{this.state.results.map((result, index) => (
+			  		<BloodSugarList
+			  			test={result}
+							onPress={e => alert("pressed!")}
+							key={index} />
+					))}
+					</WhitePanel>
 		  	</View>
 	  	</ScrollView>
   	)
@@ -65,7 +88,7 @@ const styles = StyleSheet.create({
   	padding: 20,
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		
+
 	},
 	container: {
 		padding: 20

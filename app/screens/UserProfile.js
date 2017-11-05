@@ -1,80 +1,88 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, Text, TouchableOpacity, TouchableNativeFeedback, Platform, ScrollView } from 'react-native'
-import { Avatar } from 'react-native-material-ui';
 import { connect } from 'react-redux'
 import { signOutUser } from '../actions/auth'
-import { RoundedButton } from '../components/Button'
+import { PlainButton } from '../components/Button'
 import { MenuList } from '../components/List'
-import { WhitePanel } from '../components/Panel'
+import { WhitePanel, GradientPanel } from '../components/Panel'
+import Avatar from '../components/Avatar'
 import Colors from '../constants/Colors'
 
 class UserProfile extends Component{
 	static navigationOptions = {
     header: null
   };
-	render(){
+	render() {
     const { navigate } = this.props.navigation;
 		const { user } = this.props;
 
     return (
     	<View style={styles.profile}>
-				<ScrollView>
-					<View style={styles.topDetails}>
-						<Avatar icon="person" size={80} iconSize={60} />
+				<View style={styles.topDetails}>
+					<GradientPanel style={styles.linearGradient} />
+					<WhitePanel style={styles.panel}>
+						<Avatar />
 
 						<Text style={styles.title}>{user.name}</Text>
 						<Text style={styles.subTitle}>{user.email}</Text>
 
-						<RoundedButton
-							onPress={()=>navigate("UserDetails")}
-							title="View More" />
-					</View>
+						<PlainButton
+							onPress={() => navigate("UserDetails")}
+							title="View Profile" />
 
-					<View style={styles.bottomDetails}>
-						<WhitePanel>
-							<MenuList onPress={() => navigate("MedicalRecords")}>
-								Medical Records
-							</MenuList>
-							<MenuList onPress={() => navigate("BloodSugarLevel")}>
-								Blood Sugar Report
-							</MenuList>
-							<MenuList onPress={() => this.props.signOut()}>
-								Sign Out
-							</MenuList>
-						</WhitePanel>
-					</View>
-				</ScrollView>
+					</WhitePanel>
+				</View>
+				<View style={styles.bottomDetails}>
+					<MenuList onPress={() => navigate("MedicalRecords")}>
+						Medical Records
+					</MenuList>
+					<MenuList onPress={() => navigate("BloodSugarLevel")}>
+						Blood Sugar Report
+					</MenuList>
+					<MenuList onPress={() => this.props.signOut()}>
+						Sign Out
+					</MenuList>
+				</View>
     	</View>
     	)
     }
 }
 
 const styles = StyleSheet.create({
+	linearGradient: {
+		margin: -15,
+		marginBottom: 0,
+		paddingTop: 150,
+	},
 	profile: {
-		justifyContent: 'space-between',
 		alignItems: 'stretch',
-		padding: 20
+		padding: 15,
+		flex: 1
 	},
 	topDetails: {
+		// alignItems: 'stretch',
+		// flex: 1,
+	},
+	panel: {
+		paddingLeft: 30,
+		paddingTop: 15,
 		padding: 20,
-		justifyContent: 'space-between',
-		alignItems: 'center',
-		flex: 2
+		marginTop: -135
 	},
 	bottomDetails: {
-		flex: 3,
+		padding: 15
 	},
 	title: {
-		fontSize: 30,
+		fontSize: 26,
 		fontWeight: '700',
-		color: 'black',
-		textAlign: 'center',
-		margin: 5
+		color: Colors.mainBlack,
+		marginTop: 15
 	},
 	subTitle: {
 		marginBottom: 20,
-		fontSize: 18,
-		fontFamily: Platform.OS === 'android' ? 'sans-serif-light' : undefined
+		fontSize: 16,
+		fontWeight: '100',
+		color: Colors.grey
 	},
 })
 

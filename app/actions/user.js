@@ -18,3 +18,14 @@ export const signUpUser = ({ name, email, ic, password, passwordConfirmation }) 
       }
     })
 }
+
+export const updateUser = params => dispatch => {
+  fetchApi('/auth', 'put', params)
+    .then(response => {
+      if (response) {
+        dispatch(setCurrentUser(response.data))
+        dispatch(NavigationActions.back())
+        alert("Profile updated successfully")
+      }
+    })
+}

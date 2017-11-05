@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, Text, TextInput, TouchableOpacity, TouchableNativeFeedback, ScrollView } from 'react-native'
-import { Avatar } from 'react-native-material-ui';
 import { RoundedButton } from '../components/Button'
 import { MenuList } from '../components/List'
 import { WhitePanel } from '../components/Panel'
@@ -34,21 +33,21 @@ export default class AddBloodSugarRecord extends Component {
 	    	<Text Text style={styles.smallTitle}>Sugar Concentration </Text>
 	   	  	<View style={styles.input}>
 		   			<TextInput style={{height: 40}, {width: 280}} placeholder="Your result" onChangeText={(text) => this.setState({text})}/>
-	      			<View style={styles.space}>
-	       	 			<Text>mmol/L</Text>
-	       			</View>
-	     	 </View>
+	      		<View style={styles.space}>
+	       	 		<Text>mmol/L</Text>
+	       		</View>
+	     	 	</View>
 
-     		<Text Text style={styles.smallTitle}>Measured in</Text>
+     		<Text style={styles.smallTitle}>Measured in</Text>
 
         <Dropdown label='Time' data={time}/>
 
-     		<Text Text style={styles.smallTitle}>Date & Time </Text>
+     		<Text style={styles.smallTitle}>Date & Time </Text>
 
-        	<View style={styles.input}>
-        		<Text>13 Oct 2017</Text>
-        		<Text>3:29pm</Text>
-          </View>
+        <View style={styles.input}>
+        	<Text>13 Oct 2017</Text>
+        	<Text>3:29pm</Text>
+         </View>
 
         <Text Text style={styles.smallTitle}>Notes </Text>
         <TextInput/>

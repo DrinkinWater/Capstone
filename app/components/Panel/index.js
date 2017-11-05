@@ -1,3 +1,4 @@
 import WhitePanel from './WhitePanel'
+import GradientPanel from './GradientPanel'
 
-export { WhitePanel }
+export { WhitePanel, GradientPanel }

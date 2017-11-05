@@ -5,20 +5,31 @@ const styles = StyleSheet.create({
   searchbar: {
     flexDirection: "row",
     alignItems: 'center',
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingLeft: 5,
-    backgroundColor: Colors.white
+    padding: 8,
+    backgroundColor: Colors.white,
+    borderRadius: 4
   },
   searchIcon: {
-    padding: 5,
-    fontSize: 20
+    padding: 10,
+    // marginRight: 10,
+    fontSize: 14,
+    color: Colors.grey
   },
   input: {
     flex: 1,
+    fontSize: 14,
+    color: Colors.grey
+  },
+  inputLabel: {
     fontSize: 16,
-    paddingTop: 0,
-    paddingBottom: 0
+		fontWeight: '700'
+  },
+  form: {
+    marginBottom: 10
+  },
+  formInput: {
+    borderBottomColor: Colors.lightGray,
+    borderBottomWidth: 1
   }
 })
 
