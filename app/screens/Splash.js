@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, ActivityIndicator, AsyncStorage } from 'react-native'
+import { Text, View, StyleSheet, ActivityIndicator } from 'react-native'
 import { connect } from 'react-redux'
 import { validateUser } from '../actions/auth'
 

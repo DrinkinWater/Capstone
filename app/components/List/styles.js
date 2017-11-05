@@ -47,6 +47,24 @@ const styles = StyleSheet.create({
   extraSmallListText: {
     fontSize: 12,
     fontFamily: '100'
+  },
+  cardList: {
+    padding: 10,
+    backgroundColor: Colors.white,
+    borderRadius: 4,
+    margin: 5,
+    alignItems: 'stretch',
+    width: 150,
+    height: 200
+  },
+  cardImage: {
+    backgroundColor: Colors.grey,
+    height: 80,
+    marginBottom: 15,
+    borderRadius: 4
+  },
+  cardTitle: {
+    fontSize: 16
   }
 })
 
