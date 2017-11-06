@@ -86,7 +86,7 @@ class Maps extends Component {
 	        })
 	      },
 	      (error) => alert(error.message),
-	      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+	      { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 },
 	    );
     }.bind(this)).catch((error) => {
 	      alert(error.message);
@@ -107,7 +107,7 @@ class Maps extends Component {
 					{this.props.hospitals.map((result, index) => (
 						<LocationList
 							location={result}
-							onPress={e => alert("pressed!")}
+							onPress={e => alert("Pressed!")}
 							key={index} />
 					))}
 				</ScrollView>
