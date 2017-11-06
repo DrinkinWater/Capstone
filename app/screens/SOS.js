@@ -4,22 +4,41 @@ import { Avatar } from 'react-native-material-ui'
 import { WhitePanel } from '../components/Panel'
 import { ProfileInfo } from '../components/List'
 import { SOSButton, AddButton } from '../components/Button'
-
+import ActionCable from 'react-native-actioncable'
 
 export default class SOS extends Component {
 	static navigationOptions = {
     header : null
 	}
+	componentWillMount() {
+		this.cable = ActionCable.createConsumer('ws://localhost:8080/cable')
+		// debugger
+		// ... Other code
+		this.sosDispatcher = this.cable.subscriptions.create('SosChannel', {
+			received(data) {
+				console.log('Received data:', data)
+			},
+			sendMessage(message) {
+				debugger
+				this.perform('send_message', {
+					message,
+					chat_room_id: 1
+				})
+			}
+		})
+	}
+
 	render() {
 		const { navigate } = this.props.navigation;
 
 		return (
-
       <View>
       <ScrollView>
 				<View style={styles.addIcon}>
 					<SOSButton
-						onLongPress={() => alert('Request Accepted, Hospital A, ETA 5 mins')}
+						onLongPress={() => {
+							// this.sosDispatcher.sendMessage('hellof')
+						}}
 						title="HELP ME!" />
 				</View>
 				<View style={styles.container}>
@@ -46,7 +65,7 @@ export default class SOS extends Component {
 					<Text>Panadol</Text>
 					<Text style={styles.title}>Emergency Contact</Text>
 					<Text>011-111-1111</Text>
-       
+
 				</View>
 				 <View style={styles.textbox}>
 				 <WhitePanel>
@@ -55,14 +74,14 @@ export default class SOS extends Component {
 				 </WhitePanel>
 				 </View>
 			</ScrollView>
-			</View>	
+			</View>
 
 			)
 	}
 }
 
 const styles = StyleSheet.create({
-	
+
 	addIcon:{
   	padding: 30,
 		justifyContent: 'center',
@@ -72,7 +91,7 @@ const styles = StyleSheet.create({
 		title: {
 			fontSize: 15,
 			color: 'black',
-			
+
 	},
 		container: {
 			padding:30
@@ -81,6 +100,6 @@ const styles = StyleSheet.create({
 			padding:10
 
 	}
-	
+
 
 	})

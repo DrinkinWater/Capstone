@@ -43,13 +43,32 @@ export const signOutUser = () => dispatch => {
 }
 
 export const validateUser = () => dispatch => {
-  fetchApi('/auth/validate_token', 'get')
-    .then(response => {
-      if (response) {
-        dispatch(setCurrentUser(response.data))
+  // fetchApi('/auth/validate_token', 'get')
+  //   .then(response => {
+  //     if (response) {
+        dispatch(setCurrentUser({
+          active_problem: "Too handsome",
+          allergies: "Prawn",
+          avatars: null,
+          birthday: null,
+          blood_type: "A",
+          created_at: "2017-10-04T02:32:07.015Z",
+          current_medication: "None",
+          email: "goodboy96@live.com.my",
+          emergency_contact: null,
+          gender: "male",
+          height: "168.0",
+          ic: "980823106401",
+          id: 1,
+          name: "Jeff",
+          provider: "email",
+          uid: "goodboy96@live.com.my",
+          updated_at: "2017-11-05T14:56:23.821Z",
+          weight: "55.0"
+        }))
         dispatch(resetNavigate('Home'));
-      } else {
-        dispatch(resetNavigate('LogIn'));
-      }
-    });
+    //   } else {
+    //     dispatch(resetNavigate('LogIn'));
+    //   }
+    // });
 }
