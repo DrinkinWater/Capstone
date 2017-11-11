@@ -68,33 +68,33 @@ class Maps extends Component {
   }
 
 	componentDidMount() {
-		LocationServicesDialogBox.checkLocationServicesIsEnabled({
-      message: "<h2>Use Location ?</h2>This app wants to change your device settings:<br/><br/>Use GPS, Wi-Fi, and cell network for location<br/><br/><a href='#'>Learn more</a>",
-      ok: "YES",
-      cancel: "NO",
-      enableHighAccuracy: true, // true => GPS AND NETWORK PROVIDER, false => ONLY GPS PROVIDER
-      showDialog: true, // false => Opens the Location access page directly
-      openLocationServices: true // false => Directly catch method is called if location services are turned off
-	  }).then(function(success) {
-      // success => {alreadyEnabled: true, enabled: true, status: "enabled"}
-			navigator.geolocation.getCurrentPosition(
-				(position) => {
-					console.log(position)
-	        this.props.fetchHospital({
-	          latitude: position.coords.latitude,
-	          longitude: position.coords.longitude,
-	        })
-	      },
-	      (error) => alert(error.message),
-	      { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 },
-	    );
-    }.bind(this)).catch((error) => {
-	      alert(error.message);
-	  });
-
-	  BackHandler.addEventListener('hardwareBackPress', () => {
-    	LocationServicesDialogBox.forceCloseDialog();
-	  });
+		// LocationServicesDialogBox.checkLocationServicesIsEnabled({
+    //   message: "<h2>Use Location ?</h2>This app wants to change your device settings:<br/><br/>Use GPS, Wi-Fi, and cell network for location<br/><br/><a href='#'>Learn more</a>",
+    //   ok: "YES",
+    //   cancel: "NO",
+    //   enableHighAccuracy: true, // true => GPS AND NETWORK PROVIDER, false => ONLY GPS PROVIDER
+    //   showDialog: true, // false => Opens the Location access page directly
+    //   openLocationServices: true // false => Directly catch method is called if location services are turned off
+	  // }).then(function(success) {
+    //   // success => {alreadyEnabled: true, enabled: true, status: "enabled"}
+		// 	navigator.geolocation.getCurrentPosition(
+		// 		(position) => {
+		// 			console.log(position)
+	  //       this.props.fetchHospital({
+	  //         latitude: position.coords.latitude,
+	  //         longitude: position.coords.longitude,
+	  //       })
+	  //     },
+	  //     (error) => alert(error.message),
+	  //     { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 },
+	  //   );
+    // }.bind(this)).catch((error) => {
+	  //     alert(error.message);
+	  // });
+    //
+	  // BackHandler.addEventListener('hardwareBackPress', () => {
+    // 	LocationServicesDialogBox.forceCloseDialog();
+	  // });
 
 	}
 
