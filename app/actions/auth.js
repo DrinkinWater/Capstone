@@ -47,7 +47,7 @@ export const validateUser = () => dispatch => {
   //   .then(response => {
   //     if (response) {
         dispatch(setCurrentUser({
-          active_problem: "Too handsome",
+          active_problem: "Asthma since 12 years old",
           allergies: "Prawn",
           avatars: null,
           birthday: null,
@@ -58,13 +58,14 @@ export const validateUser = () => dispatch => {
           emergency_contact: null,
           gender: "male",
           height: "168.0",
-          ic: "980823106401",
+          ic: "980108-10-6285",
           id: 1,
-          name: "Jeff",
+          name: "Joseph",
           provider: "email",
           uid: "goodboy96@live.com.my",
           updated_at: "2017-11-05T14:56:23.821Z",
-          weight: "55.0"
+          weight: "55.0",
+          age: "19"
         }))
         dispatch(resetNavigate('Home'));
     //   } else {

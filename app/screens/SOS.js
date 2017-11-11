@@ -2,26 +2,38 @@ import React, { Component } from 'react'
 import { View, Text, TextInput, StyleSheet, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { Avatar } from 'react-native-material-ui'
+import ActionCable from 'react-native-actioncable'
+import PopupDialog from 'react-native-popup-dialog';
 
+import { API_ROOT } from '../config/api'
 import { WhitePanel } from '../components/Panel'
 import { ProfileInfo } from '../components/List'
 import { SOSButton, AddButton } from '../components/Button'
-import ActionCable from 'react-native-actioncable'
 
 class SOS extends Component {
 	static navigationOptions = {
     header : null
 	}
+	constructor(props) {
+		super(props);
+		this.state = {
+			message: ""
+		};
+	}
 	componentWillMount() {
 		let self = this
-		this.cable = ActionCable.createConsumer('http://10.0.2.2:8080/cable')
+		this.cable = ActionCable.createConsumer(`${API_ROOT}/cable`)
 		// ... Other code
+		// debugger
 		this.sosDispatcher = this.cable.subscriptions.create({
 			channel: 'SosChannel',
 			chat_room_id: '1'
 		},
 		{
 			received(data) {
+				if (!data.user) {
+					alert(data.message)
+				}
 				console.log('Received data:', data)
 			},
 			sendMessage(message) {
@@ -43,14 +55,22 @@ class SOS extends Component {
 				<View style={styles.addIcon}>
 					<SOSButton
 						onLongPress={() => {
-							this.sosDispatcher.sendMessage('hellof')
+							// this.popupDialog.show();
+							this.sosDispatcher.sendMessage(this.state.message)
 						}}
 						title="HELP ME!" />
 				</View>
+			  <PopupDialog
+			    ref={(popupDialog) => { this.popupDialog = popupDialog; }}
+			  >
+			    <View>
+			      <Text>Hello</Text>
+			    </View>
+			  </PopupDialog>
 				 <View style={styles.textbox}>
 					 <WhitePanel>
 						 <Text>Notes</Text>
-						 <TextInput/>
+						 <TextInput onChangeText={message => this.setState({ message })}/>
 					 </WhitePanel>
 				 </View>
 			</ScrollView>
