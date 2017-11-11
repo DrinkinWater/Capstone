@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import Colors from '../../constants/Colors';
 import styles from './styles';
 
-const PlainButton = ({ onPress, title, style }) =>
+const PlainButton = ({ onPress, title, style}) =>
   (
     <TouchableOpacity
       onPress={onPress} >
-      <Text style={styles.plainButtonText}>
+      <Text style={[styles.plainButtonText, style]}>
         {title}
       </Text>
     </TouchableOpacity>

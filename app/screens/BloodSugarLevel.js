@@ -17,7 +17,8 @@ export default class BloodSugarLevel extends Component {
 			results: [
 				{
 					result: '6.0',
-					time: 'Before Lunch'
+					time: 'Before Lunch',
+					date: '22 April 2017'
 				}
 			]
 		};

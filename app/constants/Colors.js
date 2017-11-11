@@ -16,7 +16,10 @@ const Colors = {
   // main color
   mainBlack: 'rgb(1, 22, 39)',
   mainGreen: 'rgb(46, 196, 182)',
-  mainLightGreen: 'rgb(198, 243, 181)'
+  mainLightGreen: 'rgb(198, 243, 181)',
+  lightBlue: 'rgb(88, 154, 201)',
+  midBlue: 'rgb(91, 91, 201)',
+  veryRed: 'rgb(100, 212, 199)'
 
 }
 

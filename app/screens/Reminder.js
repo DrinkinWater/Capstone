@@ -8,9 +8,6 @@ import { WhitePanel } from '../components/Panel'
 import { RoundedButton,AddButton } from '../components/Button'
 
 export default class Reminder extends Component {
-	static navigationOptions = {
-    header: null
-  };
 
   constructor(props){
 		super(props);

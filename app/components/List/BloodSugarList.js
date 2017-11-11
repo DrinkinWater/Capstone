@@ -10,6 +10,7 @@ const BloodSugarList = ({ onPress, test  }) => (
       <View style={styles.middleText1}>
         <Text style={styles.listText}>{test.result}mmol/L</Text>
         <Text style={styles.extraSmallListText}>{test.time} </Text>
+        <Text style={styles.extraSmallListText}>{test.date} </Text>
       </View>
     </View>
   </TouchableNativeFeedback>

@@ -39,6 +39,9 @@ class UserProfile extends Component{
 					<MenuList onPress={() => navigate("BloodSugarLevel")}>
 						Blood Sugar Report
 					</MenuList>
+					<MenuList onPress={() => navigate("Reminder")}>
+						Reminder
+					</MenuList>
 					<MenuList onPress={() => this.props.signOut()}>
 						Sign Out
 					</MenuList>

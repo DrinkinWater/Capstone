@@ -18,14 +18,15 @@ import { TabNavigator, StackNavigator } from 'react-navigation'
 import AddReminder from "../screens/AddReminder"
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Colors from '../constants/Colors'
+import Call from '../screens/Call'
 
 const Home = TabNavigator(
 	{
-		Reminder: {
-    	screen: Reminder,
+		Call: {
+    	screen: Call,
     	navigationOptions: {
-    		title: 'Reminder',
-    		tabBarIcon: ({ tintColor }) => <Icon name="calendar" size={20} color={tintColor} />
+    		title: 'Call',
+    		tabBarIcon: ({ tintColor }) => <Icon name="phone" size={20} color={tintColor} />
     	}
 		},
 
@@ -104,7 +105,8 @@ const App = StackNavigator(
 	  BloodSugarLevel : {screen: BloodSugarLevel},
 	  EditUserProfile : {screen: EditUserProfile},
 	  AddReminder : {screen: AddReminder},
-	  AddNewRecord : {screen: AddNewRecord}
+	  AddNewRecord : {screen: AddNewRecord},
+	  Reminder : {screen: Reminder}
 	},
   {
     headerMode: 'screen',
