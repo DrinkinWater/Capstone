@@ -3,12 +3,13 @@ import { View, Text, TextInput, StyleSheet, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { Avatar } from 'react-native-material-ui'
 import ActionCable from 'react-native-actioncable'
-import PopupDialog from 'react-native-popup-dialog';
 
 import { API_ROOT } from '../config/api'
 import { WhitePanel, GradientPanel } from '../components/Panel'
+import { Textarea } from '../components/Input'
 import { ProfileInfo } from '../components/List'
 import { SOSButton, AddButton } from '../components/Button'
+import Colors from '../constants/Colors'
 
 class SOS extends Component {
 	static navigationOptions = {
@@ -16,8 +17,10 @@ class SOS extends Component {
 	}
 	constructor(props) {
 		super(props);
+
 		this.state = {
-			message: ""
+			message: "",
+			loading: false
 		};
 	}
 	componentWillMount() {
@@ -46,6 +49,27 @@ class SOS extends Component {
 		})
 	}
 
+	renderSOSButton() {
+		if (true) {
+			return (
+				<WhitePanel style={styles.panel}>
+					<Text style={styles.title}>Request submitted</Text>
+					<Text style={styles.subTitle}>You will be notified when hospital pick up your case.</Text>
+				</WhitePanel>
+			)
+		} else {
+			return (
+				<View style={styles.addIcon}>
+					<SOSButton
+						onLongPress={() => {
+							this.sosDispatcher.sendMessage(this.state.message)
+							this.setState({ loading: true })
+						}} />
+				</View>
+			)
+		}
+	}
+
 	render() {
 		const { navigate } = this.props.navigation;
 
@@ -53,26 +77,12 @@ class SOS extends Component {
       <View>
       <ScrollView>
 				<GradientPanel style={styles.linearGradient} />
-				<View style={styles.addIcon}>
-					<SOSButton
-						onLongPress={() => {
-							// this.popupDialog.show();
-							this.sosDispatcher.sendMessage(this.state.message)
-						}} />
-				</View>
-			  <PopupDialog
-			    ref={(popupDialog) => { this.popupDialog = popupDialog; }}
-			  >
-			    <View>
-			      <Text>Hello</Text>
-			    </View>
-			  </PopupDialog>
-				 <View style={styles.textbox}>
-					 <WhitePanel>
-						 <Text>Notes</Text>
-						 <TextInput onChangeText={message => this.setState({ message })}/>
-					 </WhitePanel>
-				 </View>
+				{this.renderSOSButton()}
+				<View style={styles.textbox}>
+					<Textarea
+						onChangeText={message => this.setState({ message })}
+						placeholder="Type your extra notes here..." />
+					</View>
 			</ScrollView>
 			</View>
 		)
@@ -80,6 +90,11 @@ class SOS extends Component {
 }
 
 const styles = StyleSheet.create({
+	panel: {
+		padding: 20,
+		margin: 20,
+		marginTop: -135
+	},
 	linearGradient: {
 		marginBottom: 0,
 		paddingTop: 150,
@@ -90,15 +105,23 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
-		title: {
-			fontSize: 15,
-			color: 'black',
+	title: {
+		fontSize: 26,
+		fontWeight: '700',
+		color: Colors.mainBlack,
 	},
-		container: {
-			padding:30
+	subTitle: {
+		marginBottom: 20,
+		marginTop: 20,
+		fontSize: 16,
+		fontWeight: '100',
+		color: Colors.grey
 	},
-		textbox: {
-			padding:10
+	container: {
+		padding: 30
+	},
+	textbox: {
+		padding: 20
 	}
 })
 

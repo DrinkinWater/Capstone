@@ -11,7 +11,6 @@ const styles = StyleSheet.create({
   },
   searchIcon: {
     padding: 10,
-    // marginRight: 10,
     fontSize: 14,
     color: Colors.grey
   },
@@ -30,6 +29,10 @@ const styles = StyleSheet.create({
   formInput: {
     borderBottomColor: Colors.lightGray,
     borderBottomWidth: 1
+  },
+  textarea: {
+    padding: 10,
+    textAlignVertical: 'top'
   }
 })
 
