@@ -1,49 +1,77 @@
 import React,{Component} from 'react'
-import { View, Text, Button, StyleSheet } from 'react-native'
-import { WhitePanel, GradientPanel } from '../components/Panel'
+import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native'
 import Avatar from '../components/Avatar'
 import Colors from '../constants/Colors'
-import { PlainButton } from '../components/Button'
-import LinearGradient from 'react-native-linear-gradient';
+import { Textarea, ChatInput } from '../components/Input'
 import {Message} from '../components/Chat'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 export default class Chat extends Component{
 	static navigationOptions = {
-		title: 'Dr. Jeff'
+		title: 'Dr. Jeff',
+		  headerRight: <Icon style={{padding:20}} size={20} name="video-camera"/>
 	}
 	
 	render(){
 		return(
-		<View>
-			<View style={styles.patient}>
-				<Message sender="patient" title="Hi i am Joseph and I had skin allergies for the past two weeks on my arm"/>
-			</View>
-			<View style={styles.doctor}>
-				<Message title="Hi, nice to meet you. Do you mind to make a video call?"/>
-			</View>
-		</View>
+			<View style={styles.space}>
+				<View>
+					<View style={styles.patient}>
+						<Message sender="patient" title="Hi i am Joseph and I had skin allergies for the past two weeks on my arm"/>
+					</View>
+					<View style={styles.doctor}>
+						<Message title="Hi, nice to meet you. Do you mind to make a video call?"/>
+					</View>
+				</View>
+				<View style={styles.attachment}>
+					<View style={styles.textbox}>
+							<ChatInput
+								onChangeText={message => this.setState({ message })}
+								placeholder="Type a message." />
+					</View>
+					<View style={styles.attachment}>
+						<TouchableOpacity>
+          		<Icon style={styles.iconSpace} name="paperclip" size={20}/>
+          	</TouchableOpacity>
+          	<TouchableOpacity>
+          		<Icon style={styles.iconSpace} name="camera" size={20}/>
+          	</TouchableOpacity>
+					</View>
+				</View>
+   		</View>
 			)
 	}
 
 }
 
 const styles = StyleSheet.create({
+	iconSpace: {
+		padding:12
+	},
+	attachment: {
+		flexDirection: 'row',
+		alignItems: 'center'
+		
+	},
 	plain: {
 		color: Colors.veryRed
 	},
-	// patient: {
-	// 	alignSelf: "flex-end"
-	// },
-	// doctor: {
-	// 	alignSelf: "flex-start"
-	// },
 	linearGradient: {
 		margin: -15,
 		marginBottom: 0,
 		paddingTop: 150,
 	},
+	space: {
+		justifyContent: 'space-between',
+		flex: 1,
+		alignItems: 'stretch'
+	},
 	gradient: {
 		flex:1
+	},
+	textbox: {
+		padding: 5,
+		flex: 1
 	},
 	avatarsize: {
 		flex: 1,

@@ -33,6 +33,10 @@ const styles = StyleSheet.create({
   textarea: {
     padding: 10,
     textAlignVertical: 'top'
+  },
+  chattextarea: {
+    padding: 5,
+    textAlignVertical: 'top'
   }
 })
 
