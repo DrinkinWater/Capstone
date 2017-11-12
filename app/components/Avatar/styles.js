@@ -5,5 +5,10 @@ export default StyleSheet.create({
     height: 90,
     width: 90,
     borderRadius: 45
+  },
+  smallavatar: {
+  	height: 75,
+  	width: 75,
+  	borderRadius: 45
   }
 })

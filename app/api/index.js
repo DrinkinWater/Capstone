@@ -55,6 +55,7 @@ const fetchApi = async (endpoint, method = 'get', body, headers = {}) => {
   if (!status.toString().match(/^2/) && !response.headers.map['access-token']) {
     // debugger
     if (endpoint !== '/auth/validate_token') {
+      debugger
       let errors = JSON.parse(response._bodyInit).errors
 
       alert(`${errors} (Error code: ${status})`)
