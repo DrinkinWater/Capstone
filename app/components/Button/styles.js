@@ -20,12 +20,9 @@ export default StyleSheet.create({
   },
 
   SOSButton: {
-    alignItems: 'center',
-    justifyContent: 'center',
     borderRadius: 150,
     width: 240,
     height: 240,
-    backgroundColor: Colors.turqoise
   },
 
   roundedButtonText: {

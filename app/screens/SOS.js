@@ -6,7 +6,7 @@ import ActionCable from 'react-native-actioncable'
 import PopupDialog from 'react-native-popup-dialog';
 
 import { API_ROOT } from '../config/api'
-import { WhitePanel } from '../components/Panel'
+import { WhitePanel, GradientPanel } from '../components/Panel'
 import { ProfileInfo } from '../components/List'
 import { SOSButton, AddButton } from '../components/Button'
 
@@ -52,13 +52,13 @@ class SOS extends Component {
 		return (
       <View>
       <ScrollView>
+				<GradientPanel style={styles.linearGradient} />
 				<View style={styles.addIcon}>
 					<SOSButton
 						onLongPress={() => {
 							// this.popupDialog.show();
 							this.sosDispatcher.sendMessage(this.state.message)
-						}}
-						title="HELP ME!" />
+						}} />
 				</View>
 			  <PopupDialog
 			    ref={(popupDialog) => { this.popupDialog = popupDialog; }}
@@ -80,7 +80,12 @@ class SOS extends Component {
 }
 
 const styles = StyleSheet.create({
+	linearGradient: {
+		marginBottom: 0,
+		paddingTop: 150,
+	},
 	addIcon:{
+		marginTop: -150,
   	padding: 30,
 		justifyContent: 'center',
 		alignItems: 'center',
