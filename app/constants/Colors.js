@@ -1,7 +1,9 @@
 const Colors = {
   white: 'rgb(255, 255, 255)',
   notSoWhite: 'rgb(250, 250, 250)',
-  grey: 'rgb(180, 180, 180)',
+  grey: 'rgb(170, 176, 189)',
+  // grey: 'rgb(181, 185, 194)',
+  // grey: 'rgb(180, 180, 180)',
   lightBlue: 'rgb(132, 177, 237)',
   lightPurple: 'rgb(200, 158, 196)',
   pink: 'rgb(255, 180, 180)',

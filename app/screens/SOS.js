@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, StyleSheet, ScrollView } from 'react-native'
+import { View, Text, ActivityIndicator, StyleSheet, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { Avatar } from 'react-native-material-ui'
 import ActionCable from 'react-native-actioncable'
@@ -20,7 +20,8 @@ class SOS extends Component {
 
 		this.state = {
 			message: "",
-			loading: false
+			submitted: false,
+			hospital: null
 		};
 	}
 	componentWillMount() {
@@ -35,7 +36,12 @@ class SOS extends Component {
 		{
 			received(data) {
 				if (!data.user) {
-					alert(data.message)
+					self.setState({
+						hospital: {
+							name: "Hospital Stephie",
+							plateNumber: data.message
+						}
+					})
 				}
 				console.log('Received data:', data)
 			},
@@ -50,12 +56,9 @@ class SOS extends Component {
 	}
 
 	renderSOSButton() {
-		if (true) {
+		if (this.state.submitted) {
 			return (
-				<WhitePanel style={styles.panel}>
-					<Text style={styles.title}>Request submitted</Text>
-					<Text style={styles.subTitle}>You will be notified when hospital pick up your case.</Text>
-				</WhitePanel>
+				this.renderHospital()
 			)
 		} else {
 			return (
@@ -63,9 +66,42 @@ class SOS extends Component {
 					<SOSButton
 						onLongPress={() => {
 							this.sosDispatcher.sendMessage(this.state.message)
-							this.setState({ loading: true })
+							this.setState({ submitted: true })
 						}} />
 				</View>
+			)
+		}
+	}
+
+	renderHospital() {
+		if (this.state.hospital) {
+			const { hospital } = this.state
+			return (
+				<WhitePanel style={styles.panel}>
+					<View style={styles.top}>
+						<Text style={[styles.smallTitle]}>We have found you a hospital!</Text>
+						<Text style={styles.midTitle}>{hospital.name}</Text>
+					</View>
+					<View style={styles.bottom}>
+					<Text style={[styles.subTitle, styles.bold]}>Number Plate</Text>
+					<Text style={styles.subTitle}>{hospital.plateNumber}</Text>
+						<Text style={[styles.subTitle, styles.bold]}>ETA</Text>
+						<Text style={styles.subTitle}>5 mins</Text>
+					</View>
+				</WhitePanel>
+			)
+		} else {
+			return (
+				<WhitePanel style={styles.panel}>
+					<View style={styles.top}>
+						<Text style={styles.title}>Request submitted</Text>
+						<Text style={styles.subTitle}>Please wait for a hospital to pick up your case</Text>
+					</View>
+					<View style={styles.bottom}>
+						<Text style={[styles.subTitle, styles.bold]}>Your extra note</Text>
+						<Text style={styles.subTitle}>{this.state.message.length ? this.state.message : "None"}</Text>
+					</View>
+				</WhitePanel>
 			)
 		}
 	}
@@ -74,26 +110,37 @@ class SOS extends Component {
 		const { navigate } = this.props.navigation;
 
 		return (
-      <View>
-      <ScrollView>
-				<GradientPanel style={styles.linearGradient} />
-				{this.renderSOSButton()}
-				<View style={styles.textbox}>
-					<Textarea
-						onChangeText={message => this.setState({ message })}
-						placeholder="Type your extra notes here..." />
-					</View>
-			</ScrollView>
+      <View style={styles.container}>
+				<View style={styles.topDetails}>
+					<GradientPanel style={styles.linearGradient} />
+					{this.renderSOSButton()}
+				</View>
+				<View style={styles.bottomDetails}>
+					{!this.state.submitted &&
+						<View style={styles.textbox}>
+							<Textarea
+								onChangeText={message => this.setState({ message })}
+								placeholder="Type your extra notes here..." />
+						</View>
+					}
+				</View>
 			</View>
 		)
 	}
 }
 
 const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		justifyContent: 'space-between'
+	},
 	panel: {
 		padding: 20,
 		margin: 20,
-		marginTop: -135
+		marginTop: -100,
+	},
+	bottomDetails: {
+		flex: 1
 	},
 	linearGradient: {
 		marginBottom: 0,
@@ -109,16 +156,29 @@ const styles = StyleSheet.create({
 		fontSize: 26,
 		fontWeight: '700',
 		color: Colors.mainBlack,
-	},
-	subTitle: {
 		marginBottom: 20,
-		marginTop: 20,
+	},
+	midTitle: {
+		fontSize: 26,
+		// fontWeight: '700',
+		color: Colors.mainBlack,
+	},
+	smallTitle: {
 		fontSize: 16,
-		fontWeight: '100',
+		marginBottom: 20,
 		color: Colors.grey
 	},
-	container: {
-		padding: 30
+	subTitle: {
+		fontSize: 16,
+		marginBottom: 20,
+		color: Colors.grey
+	},
+	bold: {
+		color: Colors.mainBlack,
+		marginBottom: 5,
+	},
+	top: {
+		marginBottom: 20
 	},
 	textbox: {
 		padding: 20

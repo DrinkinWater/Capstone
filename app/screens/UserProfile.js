@@ -62,10 +62,6 @@ const styles = StyleSheet.create({
 		padding: 15,
 		flex: 1
 	},
-	topDetails: {
-		// alignItems: 'stretch',
-		// flex: 1,
-	},
 	panel: {
 		paddingLeft: 30,
 		paddingTop: 15,
