@@ -67,7 +67,7 @@ const Home = TabNavigator(
 	},
 	{
 		tabBarPosition: 'bottom',
-		initialRouteName: 'Maps',
+		initialRouteName: 'FoodSuggestion',
 		tabBarOptions: {
 			showIcon: true,
 			showLabel: false,
