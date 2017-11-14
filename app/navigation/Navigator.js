@@ -67,7 +67,7 @@ const Home = TabNavigator(
 	},
 	{
 		tabBarPosition: 'bottom',
-		initialRouteName: 'Call',
+		initialRouteName: 'Maps',
 		tabBarOptions: {
 			showIcon: true,
 			showLabel: false,

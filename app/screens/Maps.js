@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, ScrollView, ActivityIndicator, BackHandler } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, Linking } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { Button } from 'react-native-material-ui'
 import RNGooglePlaces from 'react-native-google-places';
@@ -9,6 +9,7 @@ import LocationServicesDialogBox from "react-native-android-location-services-di
 import { SearchBar } from '../components/Input'
 import { ButtonTab } from '../components/Tab'
 import { LocationList } from '../components/List'
+import { PlainButton } from '../components/Button'
 import { WhitePanel, GradientPanel } from '../components/Panel'
 import { findNearbyHospital } from '../actions/map'
 import Colors from '../constants/Colors'
@@ -71,7 +72,7 @@ class Maps extends Component {
 			country: 'MY',
 		})
     .then((place) => {
-			console.log(place);
+			this.navigateToHospital(place)
 			// place represents user's selection from the
 			// suggestions and it is a simplified Google Place object.
     })
@@ -109,6 +110,11 @@ class Maps extends Component {
 
 	}
 
+	navigateToHospital(hospital) {
+		let address = encodeURIComponent(`${hospital.name} ${hospital.address}`)
+		Linking.openURL(`https://www.google.com/maps/dir//${address}?nogmmr=1`).catch(err => console.error('An error occurred', err));
+	}
+
 	render() {
 		let hospital = this.state.hospitals.find(h => h.id === this.state.activeHospital)
 
@@ -140,6 +146,12 @@ class Maps extends Component {
 			        {hospital.phone}
 			      </Text>
 			    </View>
+					<PlainButton
+						title="Go Now"
+						style={styles.navigateButton}
+						onPress={e => {
+							this.navigateToHospital(hospital)
+						}} />
 				</WhitePanel>
 				<View style={styles.hospitalList}>
 					<ScrollView
@@ -170,7 +182,6 @@ const styles = StyleSheet.create({
 		flex: 1
 	},
 	icon: {
-		// marginRight: 15,
 		marginLeft: -5,
 		margin: 5,
 		flex: 1,
@@ -184,11 +195,9 @@ const styles = StyleSheet.create({
 	hospital: {
 		margin: 15,
 		paddingLeft: 20,
-		// paddingTop: 10,
 		padding: 10,
 	},
 	hospitalList: {
-		marginTop: 20,
 		marginLeft: 10
 	},
 	title: {
@@ -200,9 +209,10 @@ const styles = StyleSheet.create({
 	},
 	detail: {
 		flexDirection: "row",
-    // alignItems: 'center',
     marginBottom: 10,
-		// paddingLeft: 0
+	},
+	navigateButton: {
+		marginTop: 10
 	}
 })
 
