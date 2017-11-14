@@ -1,46 +1,64 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { Button } from 'react-native-material-ui'
+import { connect } from 'react-redux'
+
 import { WhitePanel } from '../components/Panel'
 import { RoundedButton } from '../components/Button'
 import { MenuList } from '../components/List'
+import { FormInput } from '../components/Input'
+import { submitMedicalRecord } from '../actions/medicalRecord'
 
-
-export default  class AddNewRecords extends Component{
+class AddNewRecord extends Component {
 	static navigationOptions = {
-    title : 'Add New Record'
+    title: 'Add New Record'
   };
 
+	constructor(props){
+		super(props);
+
+		this.state = {
+			title: "",
+			date: "",
+			notes: ""
+		};
+
+		this.submitForm = this.submitForm.bind(this)
+	}
+
+	submitForm() {
+		let medicalRecord = {
+			...this.state,
+			image: this.props.navigation.state.params.uri
+		}
+
+		this.props.addMedicalRecord(medicalRecord)
+	}
+
   render() {
-    const {navigate} = this.props.navigation;
-	  return(
+    const { uri } = this.props.navigation.state.params;
+
+	  return (
 		  <View style = {styles.container}>
-		    <View  style ={styles.top}>
-		      <TextInput placeholder = "Title"/> 
-		      <TextInput placeholder = "Date"/>
-		      <TextInput placeholder = "Notes"/>
+				<Image
+					source={{ uri }}
+					style={styles.uploadedImage} />
+		    <View style ={styles.top}>
+					<FormInput
+						label="Title"
+						onChange={val => this.setState({ title: val })} />
+					<FormInput
+						label="Date"
+						onChange={val => this.setState({ date: val })} />
+					<FormInput
+						label="Notes"
+						onChange={val => this.setState({ notes: val })} />
         </View>
 
 	      <View style = {styles.bottom}>
-		      <WhitePanel style={styles.whitePanel}>
-
-          <MenuList onPress={e => alert("Add Photo!")}>
-          <Icon name="camera" size={20}/>
-          <Text style={styles.title2}> Add Photo </Text> 
-          </MenuList>
-                  
-          <MenuList onPress={e => alert("Upload from gallery!")}>
-          <Icon name="picture-o" size={20} />
-          <Text style={styles.title2}> Upload from gallery</Text>
-          </MenuList>
-
-          <MenuList onPress={e => alert("Upload a file!")}>
-          <Icon name="file-pdf-o" size={20} />
-          <Text style={styles.title2}> Upload a file </Text>
-          </MenuList>
-
-		      </WhitePanel>
+          <RoundedButton
+						title="Add"
+						onPress={e => this.submitForm()} />
 		    </View>
       </View>
       )
@@ -49,24 +67,32 @@ export default  class AddNewRecords extends Component{
 
 const styles = StyleSheet.create({
 	whitePanel: {
-		padding: 15	
+		padding: 15
 	},
-
 	title2:{
-		fontSize: 15,    
+		fontSize: 15,
 	},
-
 	bottom: {
 		padding: 25
 	},
-
-	picIcon:
-	{
+	picIcon: {
     padding: 30
 	},
-
 	container :{
 		padding: 20
+	},
+	uploadedImage: {
+		width: 100,
+		height: 100,
+		marginBottom: 20
 	}
-	
+
 })
+
+const mapDispatchToProps = disptach => ({
+	addMedicalRecord: medicalRecord => {
+		disptach(submitMedicalRecord(medicalRecord))
+	}
+})
+
+export default connect(null, mapDispatchToProps)(AddNewRecord)
