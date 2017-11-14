@@ -23,48 +23,9 @@ class Maps extends Component {
 		super(props);
 		this.state = {
 			activeHospital: 1,
-			hospitals: [
-				{
-					id: 1,
-					name: 'Subang Jaya Medical Centre',
-					distance: '1.2km',
-					phone: '03-56391212',
-					website: 'https://www.ramsaysimedarby.com/hospitals/sjmc/',
-					address: 'Jalan SS 12/1a, Ss 1, 47500 Subang Jaya, Selangor',
-					image: 'http://res.cloudinary.com/pairbnb/image/upload/v1510579818/image1_y2jx5i.jpg'
-				},
-				{
-					id: 2,
-					name: 'QHC Medical Centre',
-					distance: '4.8km',
-					phone: '03-8024 5760',
-					website: 'None',
-					address: '2, Jalan USJ 9/5r, Subang Business Centre Uep Subang Jaya, 47620 Subang Jaya, Selangor',
-					image: 'http://res.cloudinary.com/pairbnb/image/upload/v1510579816/image2_lxhxua.jpg'
-				},
-				{
-					id: 3,
-					name: 'Sunway Medical Centre',
-					distance: '3.2km',
-					phone: '03 7491 9191',
-					website: 'http://sunwaymedical.com/',
-					address: '5, Jalan Lagoon Selatan, Bandar Sunway, 47500 Petaling Jaya, Selangor',
-					image: 'http://res.cloudinary.com/pairbnb/image/upload/v1510579817/image3_rtjwec.jpg'
-				},
-
-			]
 		};
 
-		this.onTabSelected = this.onTabSelected.bind(this)
 		this.openSearchModal = this.openSearchModal.bind(this)
-	}
-
-	onTabSelected(tab) {
-		this.setState({activeTab: tab})
-	}
-
-	getActiveResults() {
-		return this.state.results.filter(r => r.type === this.state.activeTab)
 	}
 
 	openSearchModal() {
@@ -77,44 +38,13 @@ class Maps extends Component {
     .catch(error => console.log(error.message));  // error is a Javascript Error object
   }
 
-	componentDidMount() {
-		// LocationServicesDialogBox.checkLocationServicesIsEnabled({
-    //   message: "<h2>Use Location ?</h2>This app wants to change your device settings:<br/><br/>Use GPS, Wi-Fi, and cell network for location<br/><br/><a href='#'>Learn more</a>",
-    //   ok: "YES",
-    //   cancel: "NO",
-    //   enableHighAccuracy: true, // true => GPS AND NETWORK PROVIDER, false => ONLY GPS PROVIDER
-    //   showDialog: true, // false => Opens the Location access page directly
-    //   openLocationServices: true // false => Directly catch method is called if location services are turned off
-	  // }).then(function(success) {
-    //   // success => {alreadyEnabled: true, enabled: true, status: "enabled"}
-		// 	navigator.geolocation.getCurrentPosition(
-		// 		(position) => {
-		// 			console.log(position)
-	  //       this.props.fetchHospital({
-	  //         latitude: position.coords.latitude,
-	  //         longitude: position.coords.longitude,
-	  //       })
-	  //     },
-	  //     (error) => alert(error.message),
-	  //     { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 },
-	  //   );
-    // }.bind(this)).catch((error) => {
-	  //     alert(error.message);
-	  // });
-    //
-	  // BackHandler.addEventListener('hardwareBackPress', () => {
-    // 	LocationServicesDialogBox.forceCloseDialog();
-	  // });
-
-	}
-
 	navigateToHospital(hospital) {
 		let address = encodeURIComponent(`${hospital.name} ${hospital.address}`)
 		Linking.openURL(`https://www.google.com/maps/dir//${address}?nogmmr=1`).catch(err => console.error('An error occurred', err));
 	}
 
 	render() {
-		let hospital = this.state.hospitals.find(h => h.id === this.state.activeHospital)
+		let hospital = this.props.hospitals.find(h => h.id === this.state.activeHospital)
 
 		return (
 			<View style={styles.container}>
@@ -155,7 +85,7 @@ class Maps extends Component {
 					<ScrollView
 						horizontal={true}
 						showsHorizontalScrollIndicator={false}>
-						{this.state.hospitals.map((result, index) => (
+						{this.props.hospitals.map((result, index) => (
 							<LocationList
 								location={result}
 								onPress={e => this.setState({ activeHospital: result.id })}
@@ -218,10 +148,4 @@ const mapStateToProps = state => ({
 	hospitals: state.map.nearbyHospital
 })
 
-const mapDispatchToProps = disptach => ({
-	fetchHospital: params => {
-		disptach(findNearbyHospital(params))
-	}
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Maps)
+export default connect(mapStateToProps)(Maps)
