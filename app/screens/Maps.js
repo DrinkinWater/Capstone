@@ -1,17 +1,13 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, ScrollView, Linking } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { Button } from 'react-native-material-ui'
 import RNGooglePlaces from 'react-native-google-places';
 import { connect } from 'react-redux'
-import LocationServicesDialogBox from "react-native-android-location-services-dialog-box"
 
 import { SearchBar } from '../components/Input'
-import { ButtonTab } from '../components/Tab'
 import { LocationList } from '../components/List'
 import { PlainButton } from '../components/Button'
 import { WhitePanel, GradientPanel } from '../components/Panel'
-import { findNearbyHospital } from '../actions/map'
 import Colors from '../constants/Colors'
 
 class Maps extends Component {

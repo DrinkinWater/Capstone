@@ -1,5 +1,5 @@
 import fetchApi from '../api'
-import { setCurrentUser } from './auth'
+import { setCurrentUser, updateCurrentUser } from './auth'
 import { NavigationActions } from 'react-navigation'
 
 export const signUpUser = ({ name, email, ic, password, passwordConfirmation }) => dispatch => {
@@ -20,12 +20,12 @@ export const signUpUser = ({ name, email, ic, password, passwordConfirmation }) 
 }
 
 export const updateUser = params => dispatch => {
-  fetchApi('/auth', 'put', params)
-    .then(response => {
-      if (response) {
-        dispatch(setCurrentUser(response.data))
-        dispatch(NavigationActions.back())
-        alert("Profile updated successfully")
-      }
-    })
+  dispatch(updateCurrentUser(params))
+  dispatch(NavigationActions.back())
+  alert("Profile updated successfully")
+  // fetchApi('/auth', 'put', params)
+  //   .then(response => {
+  //     if (response) {
+  //     }
+  //   })
 }

@@ -23,6 +23,15 @@ const auth = (state = initialState, action) => {
         isLoading: action.isLoading
       };
       break;
+    case 'UPDATE_CURRENT_USER':
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          ...action.params
+        }
+      }
+      break;
     default:
       return state
   }
