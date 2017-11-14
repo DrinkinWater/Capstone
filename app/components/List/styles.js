@@ -39,7 +39,8 @@ const styles = StyleSheet.create({
     marginLeft: 30
   },
   smallListText: {
-    fontSize: 14
+    fontSize: 13,
+    color: Colors.grey
   },
   locationIcon: {
     flex: 1
@@ -54,17 +55,21 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     margin: 5,
     alignItems: 'stretch',
-    width: 150,
-    height: 200
+    width: 140,
+    height: 170
   },
   cardImage: {
-    backgroundColor: Colors.grey,
+    // backgroundColor: Colors.grey,
     height: 80,
     marginBottom: 15,
     borderRadius: 4
   },
+  cardText: {
+    flex: 1,
+    justifyContent: 'space-between'
+  },
   cardTitle: {
-    fontSize: 16
+    fontSize: 13
   }
 })
 

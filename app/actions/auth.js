@@ -50,7 +50,7 @@ export const validateUser = () => dispatch => {
           active_problem: "Asthma since 12 years old",
           allergies: "Prawn",
           avatars: null,
-          birthday: null,
+          birthday: "08/01/1998",
           blood_type: "A",
           created_at: "2017-10-04T02:32:07.015Z",
           current_medication: "None",

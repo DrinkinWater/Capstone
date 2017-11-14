@@ -66,7 +66,7 @@ const Home = TabNavigator(
 	},
 	{
 		tabBarPosition: 'bottom',
-		initialRouteName: 'SOS',
+		initialRouteName: 'Maps',
 		tabBarOptions: {
 			showIcon: true,
 			showLabel: false,

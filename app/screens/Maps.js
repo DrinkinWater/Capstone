@@ -11,6 +11,7 @@ import { ButtonTab } from '../components/Tab'
 import { LocationList } from '../components/List'
 import { WhitePanel, GradientPanel } from '../components/Panel'
 import { findNearbyHospital } from '../actions/map'
+import Colors from '../constants/Colors'
 
 class Maps extends Component {
 	static navigationOptions = {
@@ -20,26 +21,36 @@ class Maps extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			activeTab: "Hospital",
-			results: [
+			activeHospital: 1,
+			hospitals: [
 				{
-					name: 'Hospital A',
-					distance: '1 cm',
-					eta: 'ETA 1 min',
-					type: 'Hospital'
+					id: 1,
+					name: 'Subang Jaya Medical Centre',
+					distance: '1.2km',
+					phone: '03-56391212',
+					website: 'https://www.ramsaysimedarby.com/hospitals/sjmc/',
+					address: 'Jalan SS 12/1a, Ss 1, 47500 Subang Jaya, Selangor',
+					image: 'http://res.cloudinary.com/pairbnb/image/upload/v1510579818/image1_y2jx5i.jpg'
 				},
 				{
-					name: 'Hospital B',
-					distance: '5 km',
-					eta: 'ETA 10 mins',
-					type: 'Hospital'
+					id: 2,
+					name: 'QHC Medical Centre',
+					distance: '4.8km',
+					phone: '03-8024 5760',
+					website: 'None',
+					address: '2, Jalan USJ 9/5r, Subang Business Centre Uep Subang Jaya, 47620 Subang Jaya, Selangor',
+					image: 'http://res.cloudinary.com/pairbnb/image/upload/v1510579816/image2_lxhxua.jpg'
 				},
 				{
-					name: 'Clinic C',
-					distance: '3 km',
-					eta: 'ETA 4 mins',
-					type: 'Clinic'
-				}
+					id: 3,
+					name: 'Sunway Medical Centre',
+					distance: '3.2km',
+					phone: '03 7491 9191',
+					website: 'http://sunwaymedical.com/',
+					address: '5, Jalan Lagoon Selatan, Bandar Sunway, 47500 Petaling Jaya, Selangor',
+					image: 'http://res.cloudinary.com/pairbnb/image/upload/v1510579817/image3_rtjwec.jpg'
+				},
+
 			]
 		};
 
@@ -98,35 +109,49 @@ class Maps extends Component {
 
 	}
 
-	renderHospital() {
-		if (this.props.hospitals.length) {
-			return (
-				<ScrollView
-					horizontal={true}
-					showsHorizontalScrollIndicator={false}>
-					{this.props.hospitals.map((result, index) => (
-						<LocationList
-							location={result}
-							onPress={e => alert("Pressed!")}
-							key={index} />
-					))}
-				</ScrollView>
-			)
-		} else {
-			return (
-				<ActivityIndicator animating={true} size={30} />
-			)
-		}
-	}
-
 	render() {
+		let hospital = this.state.hospitals.find(h => h.id === this.state.activeHospital)
+
 		return (
 			<View style={styles.container}>
 				<GradientPanel style={styles.linearGradient}>
 					<SearchBar onClick={() => this.openSearchModal()} placeholder="What are you looking for?" />
 				</GradientPanel>
-				<View style={styles.searchResults}>
-					{this.renderHospital()}
+				<WhitePanel style={styles.hospital}>
+					<Text style={styles.title}>{hospital.name}</Text>
+					<View
+			      style={styles.detail}>
+			      <Icon size={13} style={styles.icon} name="map-marker" />
+			      <Text style={styles.input}>
+			        {hospital.address}
+			      </Text>
+			    </View>
+					<View
+			      style={styles.detail}>
+			      <Icon size={13} style={styles.icon} name="globe" />
+			      <Text style={styles.input}>
+			        {hospital.website}
+			      </Text>
+			    </View>
+					<View
+			      style={styles.detail}>
+			      <Icon size={13} style={styles.icon} name="phone" />
+			      <Text style={styles.input}>
+			        {hospital.phone}
+			      </Text>
+			    </View>
+				</WhitePanel>
+				<View style={styles.hospitalList}>
+					<ScrollView
+						horizontal={true}
+						showsHorizontalScrollIndicator={false}>
+						{this.state.hospitals.map((result, index) => (
+							<LocationList
+								location={result}
+								onPress={e => this.setState({ activeHospital: result.id })}
+								key={index} />
+						))}
+					</ScrollView>
 				</View>
 			</View>
 		)
@@ -138,33 +163,46 @@ const styles = StyleSheet.create({
 		paddingTop: 35,
 		paddingBottom: 35,
 		margin: -10,
+		marginBottom: 0
 	},
 	container: {
 		padding: 10,
 		flex: 1
 	},
-  searchbar: {
-		flexDirection: "row",
-  	alignItems: 'center',
-  	padding: 5
-  },
-  searchIcon: {
-  	padding: 5
-  },
+	icon: {
+		// marginRight: 15,
+		marginLeft: -5,
+		margin: 5,
+		flex: 1,
+		textAlign: 'center'
+	},
   input: {
-		flex: 1
+		lineHeight: 20,
+		fontSize: 13,
+		flex: 9
 	},
-	buttons: {
-		flexDirection: "row",
-		justifyContent: 'center',
-		marginTop: 15
+	hospital: {
+		margin: 15,
+		paddingLeft: 20,
+		// paddingTop: 10,
+		padding: 10,
 	},
-	space: {
-		margin: 5
-	},
-	searchResults: {
+	hospitalList: {
 		marginTop: 20,
 		marginLeft: 10
+	},
+	title: {
+		fontSize: 20,
+		fontWeight: '700',
+		color: Colors.mainBlack,
+		marginBottom: 15,
+		marginTop: 10
+	},
+	detail: {
+		flexDirection: "row",
+    // alignItems: 'center',
+    marginBottom: 10,
+		// paddingLeft: 0
 	}
 })
 

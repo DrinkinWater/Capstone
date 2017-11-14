@@ -7,10 +7,14 @@ const LocationList = ({ onPress, location }) => (
     onPress={onPress}
     delayPressIn={0}>
     <View style={styles.cardList}>
-      <Image style={styles.cardImage}></Image>
-      <Text style={styles.cardTitle}>{location.name}</Text>
-      <Text style={styles.extraSmallListText}>{location.vicinity}</Text>
-      <Text style={styles.smallListText}>{location.eta}</Text>
+      <Image
+        style={styles.cardImage}
+        source={{uri: location.image}}
+        resizeMode="cover" />
+      <View style={styles.cardText}>
+        <Text style={styles.cardTitle}>{location.name}</Text>
+        <Text style={styles.smallListText}>{location.distance}</Text>
+      </View>
     </View>
   </TouchableNativeFeedback>
 )
