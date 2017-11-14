@@ -11,6 +11,7 @@ export default class Call extends Component{
     header : null
   }
 	render(){
+		const { navigate } = this.props.navigation;
 		return(
 			
 				<LinearGradient
@@ -26,7 +27,7 @@ export default class Call extends Component{
 				 		<Text style={styles.title}>Dr. Jeff</Text>
 				 		<Text style={styles.subTitle}>Respiratory Physician</Text>
 				 		<PlainButton
-								onPress={() => navigate("UserDetails")}
+								onPress={() => navigate("Chat")}
 								title="Contact" 
 								style={styles.plain}/>
 				 </View>
@@ -39,7 +40,7 @@ export default class Call extends Component{
 				 		<Text style={styles.title}>Dr. Benjamin</Text>
 				 		<Text style={styles.subTitle}>Breast Surgeon</Text>
 				 		<PlainButton
-								onPress={() => navigate("UserDetails")}
+								onPress={() => navigate("Chat")}
 								title="Contact" 
 								style={styles.plain}/>
 				 </View>

@@ -2,6 +2,7 @@ import Splash from '../screens/Splash'
 import React from 'react';
 import LogIn from '../screens/LogIn'
 import SignUp from '../screens/SignUp'
+import Chat from '../screens/Chat'
 import ForgotPassword from '../screens/ForgotPassword'
 import UserProfile from '../screens/UserProfile'
 import MedicalRecords from "../screens/MedicalRecords"
@@ -66,7 +67,7 @@ const Home = TabNavigator(
 	},
 	{
 		tabBarPosition: 'bottom',
-		initialRouteName: 'Maps',
+		initialRouteName: 'Call',
 		tabBarOptions: {
 			showIcon: true,
 			showLabel: false,
@@ -106,6 +107,7 @@ const App = StackNavigator(
 	  EditUserProfile : {screen: EditUserProfile},
 	  AddReminder : {screen: AddReminder},
 	  AddNewRecord : {screen: AddNewRecord},
+	  Chat : {screen: Chat},
 	  Reminder : {screen: Reminder}
 	},
   {
