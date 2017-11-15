@@ -1,4 +1,11 @@
-const initialState = []
+const initialState = [
+  {
+    title: "Jeff",
+    date: "11/9/1998",
+    notes: "jaja",
+    image: "content://media/external/images/127977"
+  }
+]
 
 const medicalRecords = (state = initialState, action) => {
   switch (action.type) {

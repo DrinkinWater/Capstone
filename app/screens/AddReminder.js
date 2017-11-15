@@ -1,5 +1,5 @@
-import React,{Component} from 'react'
-import { View, Text, TextInput, TouchableOpacity, Button, StyleSheet,ScrollView } from 'react-native'
+import React, { Component } from 'react'
+import { View, Text, TextInput, TouchableOpacity, Button, StyleSheet, ScrollView } from 'react-native'
 import { RoundedButton } from '../components/Button'
 import Colors from '../constants/Colors'
 import  Icon from 'react-native-vector-icons/Ionicons' ;
@@ -28,9 +28,8 @@ export default class AddReminder extends Component {
 	  		</WhitePanel>
 	  		<View style={styles.addIcon}>
 		  		<RoundedButton
-								onPress={() => alert('Saved')}
-								title="Save" />
-
+						onPress={() => alert('Saved')}
+						title="Save" />
 				</View>
 			</View>
   		)

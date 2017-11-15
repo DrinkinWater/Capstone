@@ -49,13 +49,16 @@ class MedicalRecords extends Component {
 	}
 
 	render() {
+		const { navigate } = this.props.navigation;
+
     return (
-    	<View style = {styles.container}>
+    	<View style={styles.container}>
 	    	<Text>2017</Text>
 				{this.props.medicalRecords.map((record, i) => (
 					<RecordList
 						key={i}
-						record={record} />
+						record={record}
+						onPress={e => navigate("MedicalRecord", { record })} />
 				))}
 	    	<View style={styles.addIcon}>
 	  			<AddButton
