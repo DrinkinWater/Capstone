@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet, Dimensions } from 'react-native'
 
 import { WhitePanel } from '../components/Panel'
 import { ProfileInfo } from '../components/List'
+import Colors from '../constants/Colors'
 
 export default class MedicalRecord extends Component {
 	static navigationOptions = {
@@ -24,16 +25,18 @@ export default class MedicalRecord extends Component {
 					<ProfileInfo
 						title={"Notes"}
 						content={record.notes || '-'} />
-					<Text>{record.image}</Text>
 				</WhitePanel>
 				<Image
 					source={{ uri: record.image }}
-					style={styles.image} />
-
+					style={styles.image}
+					resizeMode="contain" />
       </View>
-      )
-    }
+    )
   }
+}
+
+// To make image full width
+const width = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
 	container: {
@@ -43,7 +46,9 @@ const styles = StyleSheet.create({
 		padding: 15
 	},
 	image: {
-		width: 400,
-		height: 200
+		width: width - 30,
+		height: 250,
+		marginTop: 15,
+		backgroundColor: Colors.white
 	}
 })

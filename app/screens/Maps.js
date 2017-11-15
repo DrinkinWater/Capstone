@@ -96,8 +96,8 @@ class Maps extends Component {
 const styles = StyleSheet.create({
 	linearGradient: {
 		padding: 25,
-		paddingTop: 35,
-		paddingBottom: 35,
+		// paddingTop: 35,
+		// paddingBottom: 35,
 		margin: -10,
 		marginBottom: 0
 	},
