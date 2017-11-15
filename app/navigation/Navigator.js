@@ -5,6 +5,7 @@ import SignUp from '../screens/SignUp'
 import Chat from '../screens/Chat'
 import ForgotPassword from '../screens/ForgotPassword'
 import UserProfile from '../screens/UserProfile'
+import MedicalRecord from "../screens/MedicalRecord"
 import MedicalRecords from "../screens/MedicalRecords"
 import UserDetails from "../screens/UserDetails"
 import BloodSugarLevel from "../screens/BloodSugarLevel"
@@ -98,6 +99,7 @@ const App = StackNavigator(
     },
 	  Home : {screen: Home},
 	  LogIn : {screen: LogIn},
+		MedicalRecord : {screen: MedicalRecord},
 	  MedicalRecords : {screen: MedicalRecords},
 	  ForgotPassword : {screen: ForgotPassword},
 	  SignUp : {screen: SignUp},

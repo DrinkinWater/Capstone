@@ -8,6 +8,9 @@ import { WhitePanel } from '../components/Panel'
 import { RoundedButton,AddButton } from '../components/Button'
 
 export default class Reminder extends Component {
+  static navigationOptions = {
+    title: 'Reminder'
+  }
 
   constructor(props){
 		super(props);
@@ -50,8 +53,9 @@ export default class Reminder extends Component {
 	}
 
 	render() {
-		const {navigate} = this.props.navigation;
-		return(
+		const { navigate } = this.props.navigation;
+
+		return (
 			<View style={styles.container}>
 				<View style={styles.buttons}>
 					<ButtonTab
@@ -80,7 +84,7 @@ export default class Reminder extends Component {
 							onPress={()=>navigate("AddReminder")}
 							 />
 		  		</View>
-  
+
 				</View>
 			</View>
 			)
@@ -91,7 +95,7 @@ export default class Reminder extends Component {
   	padding: 20,
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		
+
 	},
 		container: {
 			padding: 10

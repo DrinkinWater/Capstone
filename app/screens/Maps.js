@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, ScrollView, ActivityIndicator, BackHandler } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, Linking } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { Button } from 'react-native-material-ui'
 import RNGooglePlaces from 'react-native-google-places';
 import { connect } from 'react-redux'
-import LocationServicesDialogBox from "react-native-android-location-services-dialog-box"
 
 import { SearchBar } from '../components/Input'
-import { ButtonTab } from '../components/Tab'
 import { LocationList } from '../components/List'
+import { PlainButton } from '../components/Button'
 import { WhitePanel, GradientPanel } from '../components/Panel'
-import { findNearbyHospital } from '../actions/map'
 import Colors from '../constants/Colors'
 
 class Maps extends Component {
@@ -22,6 +19,7 @@ class Maps extends Component {
 		super(props);
 		this.state = {
 			activeHospital: 1,
+<<<<<<< HEAD
 			hospitals: [
 				{
 					id: 1,
@@ -52,18 +50,11 @@ class Maps extends Component {
 				},
 
 			]
+=======
+>>>>>>> 4556bba7fca05200fb539ff92c058f05a3c7e3c4
 		};
 
-		this.onTabSelected = this.onTabSelected.bind(this)
 		this.openSearchModal = this.openSearchModal.bind(this)
-	}
-
-	onTabSelected(tab) {
-		this.setState({activeTab: tab})
-	}
-
-	getActiveResults() {
-		return this.state.results.filter(r => r.type === this.state.activeTab)
 	}
 
 	openSearchModal() {
@@ -71,46 +62,18 @@ class Maps extends Component {
 			country: 'MY',
 		})
     .then((place) => {
-			console.log(place);
-			// place represents user's selection from the
-			// suggestions and it is a simplified Google Place object.
+			this.navigateToHospital(place)
     })
     .catch(error => console.log(error.message));  // error is a Javascript Error object
   }
 
-	componentDidMount() {
-		// LocationServicesDialogBox.checkLocationServicesIsEnabled({
-    //   message: "<h2>Use Location ?</h2>This app wants to change your device settings:<br/><br/>Use GPS, Wi-Fi, and cell network for location<br/><br/><a href='#'>Learn more</a>",
-    //   ok: "YES",
-    //   cancel: "NO",
-    //   enableHighAccuracy: true, // true => GPS AND NETWORK PROVIDER, false => ONLY GPS PROVIDER
-    //   showDialog: true, // false => Opens the Location access page directly
-    //   openLocationServices: true // false => Directly catch method is called if location services are turned off
-	  // }).then(function(success) {
-    //   // success => {alreadyEnabled: true, enabled: true, status: "enabled"}
-		// 	navigator.geolocation.getCurrentPosition(
-		// 		(position) => {
-		// 			console.log(position)
-	  //       this.props.fetchHospital({
-	  //         latitude: position.coords.latitude,
-	  //         longitude: position.coords.longitude,
-	  //       })
-	  //     },
-	  //     (error) => alert(error.message),
-	  //     { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 },
-	  //   );
-    // }.bind(this)).catch((error) => {
-	  //     alert(error.message);
-	  // });
-    //
-	  // BackHandler.addEventListener('hardwareBackPress', () => {
-    // 	LocationServicesDialogBox.forceCloseDialog();
-	  // });
-
+	navigateToHospital(hospital) {
+		let address = encodeURIComponent(`${hospital.name} ${hospital.address}`)
+		Linking.openURL(`https://www.google.com/maps/dir//${address}?nogmmr=1`).catch(err => console.error('An error occurred', err));
 	}
 
 	render() {
-		let hospital = this.state.hospitals.find(h => h.id === this.state.activeHospital)
+		let hospital = this.props.hospitals.find(h => h.id === this.state.activeHospital)
 
 		return (
 			<View style={styles.container}>
@@ -140,12 +103,18 @@ class Maps extends Component {
 			        {hospital.phone}
 			      </Text>
 			    </View>
+					<PlainButton
+						title="Go Now"
+						style={styles.navigateButton}
+						onPress={e => {
+							this.navigateToHospital(hospital)
+						}} />
 				</WhitePanel>
 				<View style={styles.hospitalList}>
 					<ScrollView
 						horizontal={true}
 						showsHorizontalScrollIndicator={false}>
-						{this.state.hospitals.map((result, index) => (
+						{this.props.hospitals.map((result, index) => (
 							<LocationList
 								location={result}
 								onPress={e => this.setState({ activeHospital: result.id })}
@@ -170,7 +139,6 @@ const styles = StyleSheet.create({
 		flex: 1
 	},
 	icon: {
-		// marginRight: 15,
 		marginLeft: -5,
 		margin: 5,
 		flex: 1,
@@ -184,11 +152,9 @@ const styles = StyleSheet.create({
 	hospital: {
 		margin: 15,
 		paddingLeft: 20,
-		// paddingTop: 10,
 		padding: 10,
 	},
 	hospitalList: {
-		marginTop: 20,
 		marginLeft: 10
 	},
 	title: {
@@ -200,9 +166,10 @@ const styles = StyleSheet.create({
 	},
 	detail: {
 		flexDirection: "row",
-    // alignItems: 'center',
     marginBottom: 10,
-		// paddingLeft: 0
+	},
+	navigateButton: {
+		marginTop: 10
 	}
 })
 
@@ -210,10 +177,4 @@ const mapStateToProps = state => ({
 	hospitals: state.map.nearbyHospital
 })
 
-const mapDispatchToProps = disptach => ({
-	fetchHospital: params => {
-		disptach(findNearbyHospital(params))
-	}
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Maps)
+export default connect(mapStateToProps)(Maps)

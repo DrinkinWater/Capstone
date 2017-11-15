@@ -6,6 +6,11 @@ export const setCurrentUser = user => ({
   user
 })
 
+export const updateCurrentUser = params => ({
+  type: 'UPDATE_CURRENT_USER',
+  params
+})
+
 const removeCurrentUser = () => ({
   type: 'REMOVE_CURRENT_USER'
 })
