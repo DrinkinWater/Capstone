@@ -35,7 +35,7 @@ class Maps extends Component {
 				{
 					id: 2,
 					name: 'QHC Medical Centre',
-					distance: '4.8km',
+					distance: '3.2km',
 					phone: '03-8024 5760',
 					website: 'None',
 					address: '2, Jalan USJ 9/5r, Subang Business Centre Uep Subang Jaya, 47620 Subang Jaya, Selangor',
@@ -44,7 +44,7 @@ class Maps extends Component {
 				{
 					id: 3,
 					name: 'Sunway Medical Centre',
-					distance: '3.2km',
+					distance: '4.8km',
 					phone: '03 7491 9191',
 					website: 'http://sunwaymedical.com/',
 					address: '5, Jalan Lagoon Selatan, Bandar Sunway, 47500 Petaling Jaya, Selangor',
