@@ -1,34 +1,55 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, TouchableOpacity, Button, StyleSheet, ScrollView } from 'react-native'
-import { RoundedButton } from '../components/Button'
-import Colors from '../constants/Colors'
-import  Icon from 'react-native-vector-icons/Ionicons' ;
-import { WhitePanel } from '../components/Panel'
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
 
-export default class AddReminder extends Component {
+import { RoundedButton } from '../components/Button'
+import { WhitePanel } from '../components/Panel'
+import { FormInput } from '../components/Input'
+import { connect } from 'react-redux'
+import { submitReminder } from '../actions/reminder'
+
+
+class AddReminder extends Component {
   static navigationOptions = {
     title: 'New Reminder'
   }
 
+  constructor(props){
+  	super(props);
+  	this.state = {
+      name: "",
+      location: "",
+      date: "",
+      time: ""
+    };
+
+    this.submitForm = this.submitForm.bind(this)
+  }
+
+  submitForm() {
+		this.props.addReminder(this.state)
+	}
+
   render() {
-  	const {navigate} = this.props.navigation;
-  	return(
-  		<View>
-	  		<WhitePanel style={styles.whitePanel}>
-	  		<View>
-	  			<Text style={styles.title}>Title</Text>
-	  			<TextInput/>
-	  			<Text style={styles.title}>Location</Text>
-	  			<TextInput/>
-	  			<Text style={styles.title}>Date</Text>
-	  			<TextInput/>
-	  			<Text style={styles.title}>Time</Text>
-	  			<TextInput/>
-	  		</View>
-	  		</WhitePanel>
+  	const { navigate } = this.props.navigation;
+
+  	return (
+  		<View style={styles.container}>
+        <FormInput
+          label="Title"
+          onChange={val => this.setState({ name: val })} />
+        <FormInput
+          label="Location"
+          onChange={val => this.setState({ location: val })} />
+          <FormInput
+          label="Date"
+          onChange={val => this.setState({ date: val })} />
+        <FormInput
+          label="Time"
+          onChange={val => this.setState({ time: val })} />
+
 	  		<View style={styles.addIcon}>
 		  		<RoundedButton
-						onPress={() => alert('Saved')}
+						onPress={() => this.submitForm()}
 						title="Save" />
 				</View>
 			</View>
@@ -37,7 +58,7 @@ export default class AddReminder extends Component {
  }
 
  const styles = StyleSheet.create({
-	whitePanel: {
+	container: {
 		padding: 15,
 	},
 	title: {
@@ -48,6 +69,13 @@ export default class AddReminder extends Component {
   	padding: 20,
 		justifyContent: 'center',
 		alignItems: 'center',
-
 	},
 })
+
+const mapDispatchToProps = disptach => ({
+	addReminder: reminder => {
+		disptach(submitReminder(reminder))
+	}
+})
+
+export default connect(null, mapDispatchToProps)(AddReminder)

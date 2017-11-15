@@ -56,12 +56,12 @@ const styles = StyleSheet.create({
     margin: 5,
     alignItems: 'stretch',
     width: 140,
-    height: 170
+    height: 150
   },
   cardImage: {
     // backgroundColor: Colors.grey,
-    height: 80,
-    marginBottom: 15,
+    height: 70,
+    marginBottom: 10,
     borderRadius: 4
   },
   cardText: {
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   cardTitle: {
-    fontSize: 13
+    fontSize: 12
   }
 })
 
