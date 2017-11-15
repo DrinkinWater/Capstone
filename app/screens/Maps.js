@@ -19,7 +19,7 @@ class Maps extends Component {
 		super(props);
 		this.state = {
 			activeHospital: 1,
-<<<<<<< HEAD
+
 			hospitals: [
 				{
 					id: 1,
@@ -50,8 +50,7 @@ class Maps extends Component {
 				},
 
 			]
-=======
->>>>>>> 4556bba7fca05200fb539ff92c058f05a3c7e3c4
+
 		};
 
 		this.openSearchModal = this.openSearchModal.bind(this)
