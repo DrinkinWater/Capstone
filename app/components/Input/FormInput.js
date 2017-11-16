@@ -14,6 +14,20 @@ const FormInput = ({ label, value, onChange }) => (
   </View>
 )
 
+FormInput.WithSuffix = ({ label, value, onChange, suffix }) => (
+  <View style={styles.form}>
+    <Text style={styles.inputLabel}>{label}</Text>
+    <View style={styles.rowInput}>
+      <TextInput
+        style={[styles.formInput, { flex: 1 }]}
+        onChangeText={onChange}
+        defaultValue={value}
+        underlineColorAndroid='rgba(0,0,0,0)' />
+      <Text>{suffix}</Text>
+    </View>
+  </View>
+)
+
 FormInput.Picker = ({ label, value, onChange, item }) => (
   <View style={styles.form}>
     <Text style={styles.inputLabel}>{label}</Text>

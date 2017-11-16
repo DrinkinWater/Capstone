@@ -2,9 +2,11 @@ import { StyleSheet } from 'react-native'
 import Colors from '../../constants/Colors'
 
 const styles = StyleSheet.create({
-  searchbar: {
+  rowInput: {
     flexDirection: "row",
     alignItems: 'center',
+  },
+  searchbar: {
     padding: 8,
     backgroundColor: Colors.white,
     borderRadius: 4
@@ -28,7 +30,7 @@ const styles = StyleSheet.create({
   },
   formInput: {
     borderBottomColor: Colors.lightGray,
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
   },
   textarea: {
     padding: 10,

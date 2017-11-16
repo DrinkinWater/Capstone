@@ -6,7 +6,7 @@ import styles from './styles'
 const SearchBar = ({ onClick, placeholder }) => (
   <TouchableWithoutFeedback onPress={onClick}>
     <View
-      style={styles.searchbar}
+      style={[styles.searchbar, styles.rowInput]}
       onClick={onClick}>
       <Icon style={styles.searchIcon} name="search" />
       <Text style={styles.input}>

@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Text, TextInput, TouchableOpacity, TouchableNativeFeedback, ScrollView } from 'react-native'
+import { View, StyleSheet, Text, TextInput } from 'react-native'
+
 import { RoundedButton } from '../components/Button'
 import { MenuList } from '../components/List'
 import { WhitePanel } from '../components/Panel'
+import { FormInput } from '../components/Input'
 import { Dropdown } from 'react-native-material-dropdown';
 
 import Colors from '../constants/Colors'
@@ -10,47 +12,48 @@ import Colors from '../constants/Colors'
 export default class AddBloodSugarRecord extends Component {
 	static navigationOptions = {
   	title: 'New Record'
-
   }
+
+	constructor(props){
+		super(props);
+		
+		this.state = {
+			sugarConcentration: "",
+			measuredIn: "",
+			date: "",
+			notes: "",
+		};
+	}
 
 	render() {
 
-	  let time= [
-			{
-	      value: 'Before Breakfast',
-	    },
-			{
-	      value: 'Before Lunch',
-	    },
-			{
-      value: 'Before Dinner',
-	    }
-		];
+	  let time = {
+			'Before Breakfast': 'Before Breakfast',
+			'Before Lunch': 'Before Lunch',
+			'Before Dinner': 'Before Dinner'
+		};
 
 		return (
 
 	    <View style={styles.container}>
-	    	<Text Text style={styles.smallTitle}>Sugar Concentration </Text>
-	   	  	<View style={styles.input}>
-		   			<TextInput style={{height: 40}, {width: 280}} placeholder="Your result" onChangeText={(text) => this.setState({text})}/>
-	      		<View style={styles.space}>
-	       	 		<Text>mmol/L</Text>
-	       		</View>
-	     	 	</View>
+				<FormInput.WithSuffix
+          label="Sugar Concentration"
+          onChange={val => this.setState({ sugarConcentration: val })}
+					suffix="mmol/L" />
 
-     		<Text style={styles.smallTitle}>Measured in</Text>
+				<FormInput.Picker
+					label="Measured in"
+					onChange={val => this.setState({ measuredIn: val })}
+					item={time} />
 
-        <Dropdown label='Time' data={time}/>
+				<FormInput
+					label="Date"
+					onChange={val => this.setState({ date: val })} />
 
-     		<Text style={styles.smallTitle}>Date & Time </Text>
+				<FormInput
+					label="Notes"
+					onChange={val => this.setState({ notes: val })} />
 
-        <View style={styles.input}>
-        	<Text>13 Oct 2017</Text>
-        	<Text>3:29pm</Text>
-         </View>
-
-        <Text Text style={styles.smallTitle}>Notes </Text>
-        <TextInput/>
       </View>
 		)
 	}
