@@ -12,6 +12,59 @@ class BloodSugarLevel extends Component {
     title: 'Your Blood Sugar Level'
   }
 
+  calculateRecordsAverage(records) {
+    // debugger
+    return records.reduce((total, record) => total += parseFloat(record.result), 0)
+  }
+
+  groupRecords(records) {
+    return [
+      this.calculateRecordsAverage(records.filter(r => r.time === "Before Breakfast")),
+      this.calculateRecordsAverage(records.filter(r => r.time === "Before Lunch")),
+      this.calculateRecordsAverage(records.filter(r => r.time === "Before Dinner")),
+    ]
+  }
+
+  weekAverage() {
+    let d = new Date()
+    let start = new Date(d.getFullYear(), d.getMonth(), d.getDate() - 7);
+
+    let records = this.props.records.filter(record => {
+      let date = new Date(record.date)
+       return date > start && date <= d
+    })
+
+    return this.groupRecords(records)
+  }
+
+  monthAverage() {
+    let d = new Date()
+
+    let end = new Date(d.getFullYear(), d.getMonth(), d.getDate() - 7);
+    let start = new Date(d.getFullYear(), d.getMonth() - 1, d.getDate());
+
+    let records = this.props.records.filter(record => {
+      let date = new Date(record.date)
+       return date > start && date <= d
+    })
+
+    return this.groupRecords(records)
+  }
+
+  threeMonthAverage() {
+    let d = new Date()
+
+    let end = new Date(d.getFullYear(), d.getMonth(), d.getDate() - 7);
+    let start = new Date(d.getFullYear(), d.getMonth() - 1, d.getDate());
+
+    let records = this.props.records.filter(record => {
+      let date = new Date(record.date)
+       return date > start && date <= d
+    })
+
+    return this.groupRecords(records)
+  }
+
   render() {
   	const { navigate } = this.props.navigation;
   	return (
@@ -29,27 +82,27 @@ class BloodSugarLevel extends Component {
 
 		  		<View style={styles.row}>
 			  		<Icon name="ios-water" color="red" size={30} />
-			  		<Text>6.9 mmol/L</Text>
-			  		<Text>6.9 mmol/L</Text>
-			  		<Text>6.9 mmol/L</Text>
+            {this.weekAverage().map((num, i) => (
+              <Text key={i}>{num} mmol/L</Text>
+            ))}
 		  		</View>
 
 		  		<Text style={styles.smallTitle}>Past 1 month</Text>
 
 		  		<View style={styles.row}>
 			  		<Icon name="ios-water" color="red" size={30} />
-			  		<Text>6.9 mmol/L</Text>
-			  		<Text>6.9 mmol/L</Text>
-			  		<Text>6.9 mmol/L</Text>
+            {this.monthAverage().map((num, i) => (
+              <Text key={i}>{num} mmol/L</Text>
+            ))}
 		  		</View>
 
 		  		<Text style={styles.smallTitle}>Past 3 months</Text>
 
 		  		<View style={styles.row}>
 			  		<Icon name="ios-water" color="red" size={30} />
-			  		<Text>6.9 mmol/L</Text>
-			  		<Text>6.9 mmol/L</Text>
-			  		<Text>6.9 mmol/L</Text>
+            {this.threeMonthAverage().map((num, i) => (
+              <Text key={i}>{num} mmol/L</Text>
+            ))}
 		  		</View>
 
 		  		<View style={styles.addIcon}>

@@ -20,7 +20,7 @@ class AddBloodSugarRecord extends Component {
 
 		this.state = {
 			result: "",
-			time: "",
+			time: "Before Breakfast",
 			date: "",
 			notes: "",
 		};
@@ -40,7 +40,6 @@ class AddBloodSugarRecord extends Component {
 		};
 
 		return (
-
 	    <View style={styles.container}>
 				<FormInput.WithSuffix
           label="Sugar Concentration"
@@ -50,7 +49,8 @@ class AddBloodSugarRecord extends Component {
 				<FormInput.Picker
 					label="Measured in"
 					onChange={val => this.setState({ time: val })}
-					item={time} />
+					item={time}
+					value={this.state.time} />
 
 				<FormInput
 					label="Date"
