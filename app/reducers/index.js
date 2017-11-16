@@ -3,6 +3,7 @@ import nav from './nav'
 import auth from './auth'
 import map from './map'
 import medicalRecords from './medicalRecords'
+import bloodSugarRecords from './bloodSugarRecords'
 import reminders from './reminders'
 
 const rootReducer = combineReducers({
@@ -10,7 +11,8 @@ const rootReducer = combineReducers({
   auth,
   map,
   medicalRecords,
-  reminders
+  reminders,
+  bloodSugarRecords
 })
 
 export default rootReducer

@@ -8,7 +8,7 @@ const BloodSugarList = ({ onPress, test  }) => (
     <View style={styles.list}>
       <Icon name="ios-water-outline" size={25} style={styles.icon} />
       <View style={styles.middleText1}>
-        <Text style={styles.listText}>{test.result}mmol/L</Text>
+        <Text style={styles.listText}>{test.result} mmol/L</Text>
         <Text style={styles.extraSmallListText}>{test.time} </Text>
         <Text style={styles.extraSmallListText}>{test.date} </Text>
       </View>

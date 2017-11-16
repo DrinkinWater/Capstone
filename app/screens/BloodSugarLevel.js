@@ -4,25 +4,14 @@ import { SOSButton, AddButton } from '../components/Button'
 import Colors from '../constants/Colors'
 import { BloodSugarList } from '../components/List'
 import { WhitePanel } from '../components/Panel'
-import  Icon from 'react-native-vector-icons/Ionicons' ;
+import Icon from 'react-native-vector-icons/Ionicons'
+import { connect } from 'react-redux'
 
-export default class BloodSugarLevel extends Component {
+class BloodSugarLevel extends Component {
   static navigationOptions = {
     title: 'Your Blood Sugar Level'
   }
 
-  constructor(props){
-		super(props);
-		this.state = {
-			results: [
-				{
-					result: '6.0',
-					time: 'Before Lunch',
-					date: '22 April 2017'
-				}
-			]
-		};
-	}
   render() {
   	const { navigate } = this.props.navigation;
   	return (
@@ -71,9 +60,9 @@ export default class BloodSugarLevel extends Component {
 
 		  		<Text style={styles.title}>Results</Text>
 		  		<WhitePanel>
-		  		{this.state.results.map((result, index) => (
+		  		{this.props.records.map((record, index) => (
 			  		<BloodSugarList
-			  			test={result}
+			  			test={record}
 							onPress={e => alert("pressed!")}
 							key={index} />
 					))}
@@ -114,3 +103,9 @@ const styles = StyleSheet.create({
 		paddingLeft: 30
 	}
 })
+
+const mapStateToProps = state => ({
+  records: state.bloodSugarRecords
+})
+
+export default connect(mapStateToProps)(BloodSugarLevel)
