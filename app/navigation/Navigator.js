@@ -21,7 +21,7 @@ import AddReminder from "../screens/AddReminder"
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Colors from '../constants/Colors'
 import Call from '../screens/Call'
-
+import FoodDetails from '../screens/FoodDetails'
 const Home = TabNavigator(
 	{
 		Call: {
@@ -68,7 +68,7 @@ const Home = TabNavigator(
 	},
 	{
 		tabBarPosition: 'bottom',
-		initialRouteName: 'UserProfile',
+		initialRouteName: 'SOS',
 		tabBarOptions: {
 			showIcon: true,
 			showLabel: false,
@@ -110,7 +110,8 @@ const App = StackNavigator(
 	  AddReminder : {screen: AddReminder},
 	  AddNewRecord : {screen: AddNewRecord},
 	  Chat : {screen: Chat},
-	  Reminder : {screen: Reminder}
+	  Reminder : {screen: Reminder},
+	  FoodDetails : {screen: FoodDetails}
 	},
   {
     headerMode: 'screen',
