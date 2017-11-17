@@ -14,7 +14,19 @@ class BloodSugarLevel extends Component {
 
   calculateRecordsAverage(records) {
     // debugger
-    return records.reduce((total, record) => total += parseFloat(record.result), 0)
+    let withNum = records.filter(record => {
+      let num = parseFloat(record.result)
+
+      return !isNaN(num)
+    })
+
+    let total = withNum.reduce((total, record) => total += parseFloat(record.result), 0)
+
+    if (withNum.length) {
+      return total / withNum.length
+    }
+
+    return 0
   }
 
   groupRecords(records) {
@@ -31,7 +43,7 @@ class BloodSugarLevel extends Component {
 
     let records = this.props.records.filter(record => {
       let date = new Date(record.date)
-       return date > start && date <= d
+      return date > start && date <= d
     })
 
     return this.groupRecords(records)
@@ -45,7 +57,7 @@ class BloodSugarLevel extends Component {
 
     let records = this.props.records.filter(record => {
       let date = new Date(record.date)
-       return date > start && date <= d
+      return date > start && date <= end
     })
 
     return this.groupRecords(records)
@@ -54,12 +66,12 @@ class BloodSugarLevel extends Component {
   threeMonthAverage() {
     let d = new Date()
 
-    let end = new Date(d.getFullYear(), d.getMonth(), d.getDate() - 7);
-    let start = new Date(d.getFullYear(), d.getMonth() - 1, d.getDate());
+    let end = new Date(d.getFullYear(), d.getMonth() - 1, d.getDate());
+    let start = new Date(d.getFullYear(), d.getMonth() - 3, d.getDate());
 
     let records = this.props.records.filter(record => {
       let date = new Date(record.date)
-       return date > start && date <= d
+      return date > start && date <= end
     })
 
     return this.groupRecords(records)
