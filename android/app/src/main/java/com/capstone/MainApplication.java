@@ -3,6 +3,13 @@ package com.capstone;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.imagepicker.ImagePickerPackage;
+import com.showlocationservicesdialogbox.LocationServicesDialogBoxPackage;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
+import com.BV.LinearGradient.LinearGradientPackage;
+import com.arttitude360.reactnative.rngoogleplaces.RNGooglePlacesPackage;
+import com.reactlibrary.securekeystore.RNSecureKeyStorePackage;
+import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -22,7 +29,14 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
+          new MainReactPackage(),
+            new ImagePickerPackage(),
+            new LocationServicesDialogBoxPackage(),
+            new ReactNativeConfigPackage(),
+            new LinearGradientPackage(),
+            new RNGooglePlacesPackage(),
+            new RNSecureKeyStorePackage(),
+            new VectorIconsPackage()
       );
     }
   };
