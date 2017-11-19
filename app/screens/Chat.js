@@ -7,11 +7,11 @@ import {Message} from '../components/Chat'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 export default class Chat extends Component{
-	static navigationOptions = {
-		title: 'Dr. Jeff',
-		  headerRight: <Icon style={{padding:20}} size={20} name="video-camera"/>
-	}
-	
+	static navigationOptions = ({ navigation }) => ({
+		title: `${navigation.state.params.title}`,
+	  headerRight: <Icon style={{padding:20}} size={20} name="video-camera"/>
+	})
+
 	render(){
 		return(
 			<View style={styles.space}>
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
 	attachment: {
 		flexDirection: 'row',
 		alignItems: 'center'
-		
+
 	},
 	plain: {
 		color: Colors.veryRed

@@ -13,7 +13,7 @@ export default class Call extends Component{
 	render(){
 		const { navigate } = this.props.navigation;
 		return(
-			
+
 				<LinearGradient
 			    colors={[Colors.midBlue, Colors.lightBlue]}
 			    start={{x: 0.0, y: 0.25}}
@@ -27,9 +27,9 @@ export default class Call extends Component{
 				 		<Text style={styles.title}>Dr. Jeff</Text>
 				 		<Text style={styles.subTitle}>Respiratory Physician</Text>
 				 		<PlainButton
-								onPress={() => navigate("Chat")}
-								title="Contact" 
-								style={styles.plain}/>
+							onPress={() => navigate("Chat", {title: "Dr. Jeff"})}
+							title="Contact"
+							style={styles.plain}/>
 				 </View>
 				 </WhitePanel>
 				 <WhitePanel style={styles.panel} >
@@ -40,9 +40,9 @@ export default class Call extends Component{
 				 		<Text style={styles.title}>Dr. Benjamin</Text>
 				 		<Text style={styles.subTitle}>Breast Surgeon</Text>
 				 		<PlainButton
-								onPress={() => navigate("Chat")}
-								title="Contact" 
-								style={styles.plain}/>
+							onPress={() => navigate("Chat", {title: "Dr. Benjamin"})}
+							title="Contact"
+							style={styles.plain}/>
 				 </View>
 				 </WhitePanel>
 				 </LinearGradient>
