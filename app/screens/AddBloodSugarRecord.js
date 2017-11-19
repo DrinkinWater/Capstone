@@ -54,7 +54,8 @@ class AddBloodSugarRecord extends Component {
 
 				<FormInput
 					label="Date"
-					onChange={val => this.setState({ date: val })} />
+					onChange={val => this.setState({ date: val })}
+					placeholder="MM/DD/YYYY" />
 
 				<FormInput
 					label="Notes"
