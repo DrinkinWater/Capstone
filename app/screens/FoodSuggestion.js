@@ -44,12 +44,12 @@ export default class FoodSuggestion extends Component{
 
 	render(){
     const {navigate} = this.props.navigation;
-    return( 
+    return(
     	<View style={styles.container}>
       	<SearchBar onChangeText={t => alert(t)} placeholder="What food are you looking for?" />
         <View style={styles.buttons}>
             <ButtonTab
-              onPress={() => this.onTabSelected('low sugar')}
+              onPress={() => this.onTabSelected('low carbs')}
               active={this.state.activeTab === 'low carbs'}>
               low carbs
             </ButtonTab>
