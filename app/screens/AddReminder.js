@@ -42,7 +42,8 @@ class AddReminder extends Component {
           onChange={val => this.setState({ location: val })} />
           <FormInput
           label="Date"
-          onChange={val => this.setState({ date: val })} />
+          onChange={val => this.setState({ date: val })}
+          placeholder="MM/DD/YYYY" />
         <FormInput
           label="Time"
           onChange={val => this.setState({ time: val })} />

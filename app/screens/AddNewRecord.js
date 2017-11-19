@@ -49,7 +49,8 @@ class AddNewRecord extends Component {
 						onChange={val => this.setState({ title: val })} />
 					<FormInput
 						label="Date"
-						onChange={val => this.setState({ date: val })} />
+						onChange={val => this.setState({ date: val })}
+						placeholder="MM/DD/YYYY" />
 					<FormInput
 						label="Notes"
 						onChange={val => this.setState({ notes: val })} />
